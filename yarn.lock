@@ -7316,6 +7316,10 @@ uid-number@^0.0.6:
   version "0.0.6"
   resolved "http://registry.npm.taobao.org/uid-number/download/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
 
+uikit@^3.0.0-beta.40:
+  version "3.0.0-beta.40"
+  resolved "http://registry.npm.taobao.org/uikit/download/uikit-3.0.0-beta.40.tgz#d59de0f804a81d40c34d10370e265098955f61f3"
+
 ultron@1.0.x:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/ultron/download/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
@@ -7550,6 +7554,10 @@ vue-template-compiler@^2.5.2:
 vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
+
+vue2-animate@^1.0.4:
+  version "1.0.4"
+  resolved "http://registry.npm.taobao.org/vue2-animate/download/vue2-animate-1.0.4.tgz#23fd1ee4ef2e25672f6a84a3363f306160f38032"
 
 vue@^2.5.2:
   version "2.5.13"

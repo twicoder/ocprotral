@@ -17,9 +17,11 @@
     "echarts": "^4.0.3",
     "element-ui": "^2.2.0",
     "font-awesome": "^4.7.0",
+    "uikit": "^3.0.0-beta.40",
     "vue": "^2.5.2",
     "vue-resource": "^1.4.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue2-animate": "^1.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
