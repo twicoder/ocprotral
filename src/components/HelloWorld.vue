@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div>
     <h1>{{ msg }}</h1>
-    <el-row :gutter="30">
+    <el-row class="row-grid" :gutter="30">
       <el-col :span="6">
         <el-card class="box-card">
           <span class="fa-stack fa-4x pull-left card">
@@ -47,8 +47,8 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-row style="margin-top: 10px;" :gutter="30">
-      <el-col :span="18">
+    <el-row class="row-grid" :gutter="30">
+      <el-col :span="18" style="margin-top: 20px;">
         <el-card class="box-card">
           <div slot="header">
             <span>CPU资源使用</span>
@@ -56,7 +56,7 @@
           <div id="myChart" style="height: 300px;"></div>
         </el-card>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="6" style="margin-top: 20px;">
         <el-card class="box-card">
           <div slot="header">
             <span>集群资源满足度</span>
@@ -104,12 +104,12 @@
         legend: {
           orient: 'vertical',
           x: 'left',
-          data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
         },
         series: [
           {
-            name:'访问来源',
-            type:'pie',
+            name: '访问来源',
+            type: 'pie',
             radius: ['50%', '70%'],
             avoidLabelOverlap: false,
             label: {
@@ -130,12 +130,12 @@
                 show: false
               }
             },
-            data:[
-              {value:335, name:'直接访问'},
-              {value:310, name:'邮件营销'},
-              {value:234, name:'联盟广告'},
-              {value:135, name:'视频广告'},
-              {value:1548, name:'搜索引擎'}
+            data: [
+              {value: 335, name: '直接访问'},
+              {value: 310, name: '邮件营销'},
+              {value: 234, name: '联盟广告'},
+              {value: 135, name: '视频广告'},
+              {value: 1548, name: '搜索引擎'}
             ]
           }
         ]
@@ -147,14 +147,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .container {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .box-card .card {
-    margin-left: -10px;
-    margin-bottom: -10px;
-    padding-right: 20px;
+  *{
+    box-sizing: border-box;
   }
 </style>

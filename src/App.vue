@@ -80,7 +80,7 @@
         </el-row>
       </div>
     </transition>
-    <el-menu style="float:left;min-height: 800px;" default-active="1-4-1" class="el-menu-vertical-demo"
+    <el-menu style="box-sizing: border-box;float: left;" class="el-menu-vertical-demo"
              :collapse="isCollapse" @select="handleSelect1">
       <el-menu-item index="navigator">
         <i class="el-icon-menu"></i>
@@ -117,25 +117,27 @@
         <span slot="title">导航四</span>
       </el-menu-item>
     </el-menu>
-    <router-view style="float: left;margin-top: 20px;margin-left: 20px;" :style="mainContainer"/>
+    <div class="container" :style="mainContainer">
+      <transition name="point" enter-active-class="fadeIn">
+        <router-view v-if="contentShow"/>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-  import ElRow from "element-ui/packages/row/src/row";
-  import ElCol from "element-ui/packages/col/src/col";
-
   export default {
-    components: {
-      ElCol,
-      ElRow},
     name: 'App',
     data() {
       return {
         show: false,
         isCollapse: true,
+        contentShow: true,
         mainContainer : {
-          width: `${document.documentElement.clientWidth - 260}px`
+          'margin-left': '64px'
+        },
+        documentHeight: {
+          'height': `${document.documentElement.clientHeight - 60}px`
         }
       };
     },
@@ -149,13 +151,28 @@
           let self = this;
           setTimeout(function(){
             self.show = true;
-          },100);
+          },200);
         }
       },
       handleSelect1(key){
         if(key === "navigator"){
           this.isCollapse = !this.isCollapse;
         }
+        if(this.isCollapse){
+          this.mainContainer = {
+            'margin-left': '64px'
+          };
+          this.contentShow = false;
+          let self = this;
+          setTimeout(function(){
+            self.contentShow = true;
+          },300);
+        }else{
+          this.mainContainer = {
+            'margin-left': '200px'
+          };
+        }
+
       },
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -179,6 +196,10 @@
 
   .el-menu-demo{
     z-index: 10;
+  }
+
+  .point-leave{
+    opacity: 0;
   }
 
   .el-menu-item.is-disabled.opa1 {
@@ -223,4 +244,13 @@
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
   }
+
+  .container{
+    padding: 20px;
+  }
+
+  .row-grid::after{
+    clear: none;
+  }
+
 </style>
