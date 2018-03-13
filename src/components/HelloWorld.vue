@@ -4,13 +4,13 @@
     <el-row class="row-grid" :gutter="30">
       <el-col :span="6">
         <el-card class="box-card">
-          <span class="fa-stack fa-4x pull-left card">
+          <span class="fa-stack fa-4x card pull-left">
               <i class="fa fa-circle fa-stack-2x" style="color: lightblue"></i>
               <i class="fa fa-database fa-stack-1x fa-inverse"></i>
             </span>
-          HDFS存储空间 (PB)
-          <h2>10/15</h2>
-          <span style="color: red; font-size: 8px;">40%使用率</span>
+            HDFS存储空间 (PB)
+          <div style="font-size: 20px;">10/15</div>
+          <div style="color: red; font-size: 8px;">40%使用率</div>
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -19,8 +19,7 @@
               <i class="fa fa-circle fa-stack-2x" style="color: lightgreen"></i>
               <i class="fa fa-thumbs-o-up fa-stack-1x fa-inverse"></i>
             </span>
-          MapReduce作业日吞吐量<br/>
-          <span>(jobs)</span>
+          <div style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">MapReduce作业日吞吐量(jobs)dsdddddd</div>
           <h2>8337</h2>
         </el-card>
       </el-col>
@@ -147,7 +146,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  *{
-    box-sizing: border-box;
+  /* 使用deep选择器可以实现对element ui component 样式的局部修改 */
+  .row-grid >>> .el-card .el-card__body{
+    padding: 0;
   }
 </style>

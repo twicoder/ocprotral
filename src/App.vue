@@ -236,6 +236,10 @@
     border-top: 1px solid;
   }
 
+  *{
+    box-sizing: border-box;
+  }
+
   .globalMenu li:hover{
     color: white;
     cursor: pointer;
