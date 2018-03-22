@@ -247,7 +247,7 @@
   }
 
   .row-grid::after{
-    clear: none;
+    clear: none !important;
   }
 
 </style>

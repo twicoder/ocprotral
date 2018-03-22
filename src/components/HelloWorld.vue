@@ -2,51 +2,6 @@
   <div>
     <h1>{{ msg }}</h1>
     <el-row class="row-grid" :gutter="30">
-      <el-col :span="6">
-        <el-card class="box-card">
-          <span class="fa-stack fa-4x card pull-left">
-              <i class="fa fa-circle fa-stack-2x" style="color: lightblue"></i>
-              <i class="fa fa-database fa-stack-1x fa-inverse"></i>
-            </span>
-            HDFS存储空间 (PB)
-          <div style="font-size: 20px;">10/15</div>
-          <div style="color: red; font-size: 8px;">40%使用率</div>
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card class="box-card">
-          <span class="fa-stack fa-4x pull-left card">
-              <i class="fa fa-circle fa-stack-2x" style="color: lightgreen"></i>
-              <i class="fa fa-thumbs-o-up fa-stack-1x fa-inverse"></i>
-            </span>
-          <div style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">MapReduce作业日吞吐量(jobs)dsdddddd</div>
-          <h2>8337</h2>
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card class="box-card">
-          <span class="fa-stack fa-4x pull-left card">
-              <i class="fa fa-circle fa-stack-2x" style="color: darkkhaki"></i>
-              <i class="fa fa-quora fa-stack-1x fa-inverse"></i>
-            </span>
-          Spark作业日吞吐量<br/>
-          <span>(jobs)</span>
-          <h2>834</h2>
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card class="box-card">
-          <span class="fa-stack fa-4x pull-left card">
-              <i class="fa fa-circle fa-stack-2x" style="color: lightcoral"></i>
-              <i class="fa fa-map-o fa-stack-1x fa-inverse"></i>
-            </span>
-          HDFS存储空间 (PB)
-          <h2>10/15</h2>
-          <span style="color: green; font-size: 8px;">40%使用率</span>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row class="row-grid" :gutter="30">
       <el-col :span="18" style="margin-top: 20px;">
         <el-card class="box-card">
           <div slot="header">
