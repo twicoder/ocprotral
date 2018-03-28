@@ -81,7 +81,7 @@
       </div>
     </transition>
     <el-menu style="box-sizing: border-box;float: left;" class="el-menu-vertical-demo"
-             :collapse="isCollapse" @select="handleSelect1">
+             :collapse="isCollapse" @select="handleSelect1" router>
       <el-menu-item index="navigator">
         <i class="el-icon-menu"></i>
         <span slot="title">导航</span>
@@ -92,6 +92,7 @@
           <span slot="title">运营管理</span>
         </template>
         <el-menu-item-group>
+          <el-menu-item index="OCSP">OCSP</el-menu-item>
           <el-menu-item index="1-1">数据集成</el-menu-item>
           <el-menu-item index="1-2">流处理引擎</el-menu-item>
           <el-menu-item index="1-3">网络爬虫</el-menu-item>
