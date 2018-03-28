@@ -264,8 +264,8 @@
     margin: 0;
   }
 
-  .el-menu {
-    border-right: 0
+  body .el-menu {
+    border-right: 0;
   }
 
   .el-menu-item-group .el-menu-item-group__title{
