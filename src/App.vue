@@ -9,19 +9,19 @@
       text-color="#fff"
       active-text-color="#ffd04b">
       <el-menu-item disabled class="opa1" index="">
-        <img style="height: 40px; width: 40px; margin-left: 20px;" src="./assets/logo.png">
-        AISWare BigData
+        <img style="height: 40px; width: 40px; margin-left: 20px;" src="./assets/logo1.png">
+        &nbsp;&nbsp;AISWare BigData
       </el-menu-item>
       <el-menu-item index="solution">
-        解决方案
+        <div>解决方案</div>
       </el-menu-item>
       <el-menu-item index="products">
-        产品
+        <div>产品</div>
       </el-menu-item>
-      <el-menu-item index="user" class="pull-right" style="margin-right: 20px;">
+      <el-menu-item disabled index="user" class="opa1 pull-right" style="margin-right: 20px;">
         <i class="fa fa-user"></i>&nbsp;admin
       </el-menu-item>
-      <el-menu-item index="help" class="pull-right">
+      <el-menu-item disabled index="help" class="opa1 pull-right">
         <i class="fa fa-question-circle"></i>&nbsp;帮助
       </el-menu-item>
       <el-menu-item disabled class="opa1 pull-right" index="" style="margin-top: -1px;">
@@ -80,11 +80,17 @@
         </el-row>
       </div>
     </transition>
-    <el-menu style="box-sizing: border-box;float: left;" class="el-menu-vertical-demo"
-             :collapse="isCollapse" @select="handleSelect1">
+    <el-menu style="box-sizing: border-box;float: left;"
+             :style="{'min-height': documentHeight}"
+             class="el-menu-vertical-demo"
+             :collapse="isCollapse"
+             @select="handleSelect1"
+             background-color="#545c64"
+             text-color="#fff"
+             active-text-color="#ffd04b">
       <el-menu-item index="navigator">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航</span>
+        <i class="fa fa-bars"></i>
+        <span slot="title">全部导航</span>
       </el-menu-item>
       <el-submenu index="1">
         <template slot="title">
@@ -92,23 +98,94 @@
           <span slot="title">运营管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="1-1">数据集成</el-menu-item>
-          <el-menu-item index="1-2">流处理引擎</el-menu-item>
-          <el-menu-item index="1-3">网络爬虫</el-menu-item>
+          <el-menu-item index="1-1">营销管理中心</el-menu-item>
+          <el-menu-item index="1-2">智能推荐中心</el-menu-item>
+          <el-menu-item index="1-3">标签管理中心</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">大数据基础能力</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <i class="el-icon-document"></i>
-        <span slot="title">大数据运维</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">数据检索</span>
-      </el-menu-item>
+      <el-submenu index="2">
+        <template slot="title">
+          <i class="el-icon-document"></i>
+          <span slot="title">数据管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="2-1">数据治理专家</el-menu-item>
+          <el-menu-item index="2-2">数据安全中心</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-picture"></i>
+          <span slot="title">数据采集处理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="3-1">数据集成</el-menu-item>
+          <el-menu-item index="3-2">流处理引擎</el-menu-item>
+          <el-menu-item index="3-3">网络爬虫</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-edit"></i>
+          <span slot="title">数据分析</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="4-1">可视化数据分析</el-menu-item>
+          <el-menu-item index="4-2">内容分析中心</el-menu-item>
+          <el-menu-item index="4-3">复杂时间中心</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="5">
+        <template slot="title">
+          <i class="el-icon-edit-outline"></i>
+          <span slot="title">人工智能</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="5-1">机器学习平台</el-menu-item>
+          <el-menu-item index="5-2">机器学习模型库</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="6">
+        <template slot="title">
+          <i class="el-icon-news"></i>
+          <span slot="title">数据开放</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="6-1">数据开放环境</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="7">
+        <template slot="title">
+          <i class="el-icon-search"></i>
+          <span slot="title">数据检索</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="7-1">关联检索引擎</el-menu-item>
+          <el-menu-item index="7-2">可视化数据访问</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="8">
+        <template slot="title">
+          <i class="el-icon-rank"></i>
+          <span slot="title">大数据运维</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="8-1">集群洞察</el-menu-item>
+          <el-menu-item index="8-2">智能运维</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="9">
+        <template slot="title">
+          <i class="el-icon-goods"></i>
+          <span slot="title">大数据基础能力</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="9-1">大数据基础平台</el-menu-item>
+          <el-menu-item index="9-2">集群管控平台</el-menu-item>
+          <el-menu-item index="9-3">容器操作平台</el-menu-item>
+          <el-menu-item index="9-4">研发交付云平台</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
     <div class="container" :style="mainContainer">
       <transition name="point" enter-active-class="fadeIn">
@@ -129,10 +206,14 @@
         mainContainer : {
           'margin-left': '64px'
         },
-        documentHeight: {
-          'height': `${document.documentElement.clientHeight - 60}px`
-        }
+        documentHeight: `${document.documentElement.clientHeight - 60}px`
       };
+    },
+    mounted: function(){
+      const self = this;
+      window.onresize = () => {
+        self.documentHeight = `${document.documentElement.clientHeight - 60}px`;
+      }
     },
     methods: {
       handleSelect(key) {
@@ -141,11 +222,14 @@
         }else{
           this.activeTab = key;
           this.show = false;
-          let self = this;
+          const self = this;
           setTimeout(function(){
             self.show = true;
           },200);
         }
+      },
+      mouseOver(){
+        console.log("test");
       },
       handleSelect1(key){
         if(key === "navigator"){
@@ -165,13 +249,6 @@
             'margin-left': '200px'
           };
         }
-
-      },
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
       }
     },
     computed: {
@@ -185,6 +262,20 @@
 <style>
   html, body {
     margin: 0;
+  }
+
+  .el-menu {
+    border-right: 0
+  }
+
+  .el-menu-item-group .el-menu-item-group__title{
+    display: none;
+  }
+
+  .el-menu-item-group li.el-menu-item{
+    height: 44px;
+    line-height: 44px;
+    font-size: 10px;
   }
 
   .el-menu-demo{
@@ -227,6 +318,7 @@
     top: 60px;
     width: 100%;
     border-top: 1px solid;
+    overflow: hidden;
   }
 
   *{
@@ -240,6 +332,14 @@
 
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
+  }
+
+  .el-menu-item [class^=fa] {
+    margin-right: 5px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
+    vertical-align: middle;
   }
 
   .container{
