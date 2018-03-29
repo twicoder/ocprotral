@@ -35,17 +35,23 @@
     <transition name="slide" enter-active-class="slideInDown" leave-active-class="slideOutUp">
       <div v-show="show" class="modalContainer">
         <el-row :gutter="20" class="globalMenu">
-          <el-col :span="3" style="padding-top: 8px;">
-            <ul class="uk-list uk-list-bullet">
-              <li><h4 style="color: white">最近访问</h4></li>
+          <el-col :span="3" :offset="2">
+            <ul class="uk-list uk-list-space">
+              <li class="globalMenuHeader">最近访问</li>
               <li>客户群推送</li>
               <li>电信运营商营销服务</li>
               <li>对外营销服务</li>
             </ul>
+            <ul class="uk-list uk-list-space">
+              <li class="globalMenuHeader">数据加工坊</li>
+              <li>研发交付平台</li>
+              <li>内容分析中心</li>
+              <li>标签管理中心</li>
+            </ul>
           </el-col>
-          <el-col :span="2" style="background-color: rgb(97,98,100);padding-top: 10px;padding-bottom: 50px;">
-            <ul class="uk-list">
-              <li>全部</li>
+          <el-col :span="3">
+            <ul class="uk-list uk-list-space">
+              <li class="globalMenuHeader">全部</li>
               <li>营销</li>
               <li>运维</li>
               <li>位置</li>
@@ -53,10 +59,16 @@
               <li>人工智能</li>
               <li>数据开放</li>
             </ul>
+            <ul class="uk-list uk-list-space">
+              <li class="globalMenuHeader">基础设施</li>
+              <li>大数据基础平台</li>
+              <li>集群洞察 &nbsp;<div class="uk-badge uk-badge-danger">NEW</div></li>
+              <li>OCSP &nbsp;<div class="uk-badge uk-badge-danger">HOT</div></li>
+            </ul>
           </el-col>
-          <el-col :span="4" style="padding-top: 10px;font-size: 14px;">
-            <ul class="uk-list">
-              <li>客户群推送</li>
+          <el-col :span="3">
+            <ul class="uk-list uk-list-space">
+              <li class="globalMenuHeader">客户群推送</li>
               <li>电信运营商营销服务</li>
               <li>对外营销服务</li>
               <li>智能推荐</li>
@@ -64,9 +76,9 @@
               <li>大数据平台统一智能运维</li>
             </ul>
           </el-col>
-          <el-col :span="4" style="padding-top: 10px;font-size: 14px;">
-            <ul class="uk-list">
-              <li>多租户统一智能运维</li>
+          <el-col :span="3">
+            <ul class="uk-list uk-list-space">
+              <li class="globalMenuHeader">多租户统一智能运维</li>
               <li>人工智能模型开发与数据挖掘</li>
               <li>BDPASS</li>
               <li>数据治理</li>
@@ -187,7 +199,7 @@
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
-    <div class="container" :style="mainContainer">
+    <div class="container" :style="{'min-height': documentHeight, 'margin-left': mainContainer}">
       <transition name="point" enter-active-class="fadeIn">
         <router-view v-if="contentShow"/>
       </transition>
@@ -203,9 +215,7 @@
         show: false,
         isCollapse: true,
         contentShow: true,
-        mainContainer : {
-          'margin-left': '64px'
-        },
+        mainContainer : '64px',
         documentHeight: `${document.documentElement.clientHeight - 60}px`
       };
     },
@@ -236,18 +246,14 @@
           this.isCollapse = !this.isCollapse;
         }
         if(this.isCollapse){
-          this.mainContainer = {
-            'margin-left': '64px'
-          };
+          this.mainContainer = '64px';
           this.contentShow = false;
           let self = this;
           setTimeout(function(){
             self.contentShow = true;
           },300);
         }else{
-          this.mainContainer = {
-            'margin-left': '200px'
-          };
+          this.mainContainer = '200px';
         }
       }
     },
@@ -262,20 +268,29 @@
 <style>
   html, body {
     margin: 0;
+    background-color: rgb(24, 32, 40);
   }
 
   body .el-menu {
     border-right: 0;
   }
 
+  h1, h2, h3{
+    color: white;
+  }
+
   .el-menu-item-group .el-menu-item-group__title{
     display: none;
+  }
+
+  .el-menu .el-input input{
+    border-radius: 9px;
   }
 
   .el-menu-item-group li.el-menu-item{
     height: 44px;
     line-height: 44px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .el-menu-demo{
@@ -311,13 +326,12 @@
 
   .modalContainer{
     color: lightgrey;
-    background-color: rgb(84, 92, 100);
+    background-color: rgb(24, 32, 40);
     z-index: 1;
     position:absolute;
     left: 0;
     top: 60px;
     width: 100%;
-    border-top: 1px solid;
     overflow: hidden;
   }
 
@@ -325,9 +339,21 @@
     box-sizing: border-box;
   }
 
-  .globalMenu li:hover{
-    color: white;
+  .globalMenu ul.uk-list li:hover{
+    color: rgb(255, 208, 75);
     cursor: pointer;
+  }
+
+  .globalMenu ul.uk-list li{
+    font-size: 12px;
+  }
+
+  .globalMenu ul.uk-list li.globalMenuHeader{
+    font-size: 14px;
+    color: white;
+    cursor: text;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -338,13 +364,29 @@
     margin-right: 5px;
     width: 24px;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     vertical-align: middle;
   }
 
   .container{
+    /*background-color: rgb(24, 32, 40);*/
     padding: 20px;
   }
+
+  /*.container *{*/
+    /*color: lightgrey;*/
+    /*background-color: rgb(24, 32, 40);*/
+  /*}*/
+
+  /*.container .el-button:hover{*/
+    /*color: black;*/
+    /*background-color: #ecf5ff;*/
+  /*}*/
+
+  /*.container .el-button:hover span{*/
+    /*color: black;*/
+    /*background-color: #ecf5ff;*/
+  /*}*/
 
   .row-grid::after{
     clear: none !important;
