@@ -45,7 +45,7 @@
                         <div slot="header">
                             <span><b style="font-size:18px;">作业流业务配置图</b></span>
                         </div>
-                        <div id="myChart1" style="height: 420px;">
+                        <div id="myChart1" style="height: 408px;">
                             <a v-on:click="goPrev()" class="el-icon-arrow-left goPrevArrow"></a>
                             <a v-on:click="goNext()" class="el-icon-arrow-right goNextArrow"></a>
                             <el-carousel :autoplay="false"  arrow="never" height="440px" ref="carousel" indicator-position="outside">
@@ -775,7 +775,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box-card {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 .el-row {
   margin-bottom: 20px;
