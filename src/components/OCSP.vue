@@ -1,6 +1,12 @@
 <template>
-    <div>
-        <el-row :gutter="20">
+  <el-container>
+    <el-header>
+      <el-row :gutter="20" >
+        <el-col :span="18" :offset="6"><div class=""> <h1 style="display:inline-block;">AISWare Stream Processor</h1><a href="" style="color:grey;margin-left:20px;">访问应用实例</a></div></el-col>
+      </el-row>
+    </el-header>
+    <el-main>
+        <el-row :gutter="5">
             <el-col :span="6">
                 <div class="grid-content bg-purple">
                     <el-card class="box-card">
@@ -68,10 +74,11 @@
                 </div>
             </el-col>
         </el-row>
-    </div>
+    </el-main>
+  </el-container>
+    
 </template>
 <script>
-
 export default {
   name: "OCSP",
   data() {
@@ -81,22 +88,22 @@ export default {
       allStreamsDataItems: [
         {
           index: 0,
-          steamflowchartpath:'../../static/pics/evt1.png',
-          data_statistic: {"success": 2000, "fail": 100},
+          steamflowchartpath: "../../static/pics/evt1.png",
+          data_statistic: { success: 2000, fail: 100 },
           usefulDataTrendChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             title: {
-              text: '有效数据',
-              textStyle:{
-                color:'#EEE'
-              }              
+              text: "有效数据",
+              textStyle: {
+                color: "#EEE"
+              }
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'axis'
+              trigger: "axis"
             },
             toolbox: {
               show: true
@@ -104,40 +111,40 @@ export default {
             calculable: true,
             xAxis: [
               {
-                type: 'category',
+                type: "category",
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
               }
             ],
             yAxis: [
               {
-                type: 'value'
+                type: "value"
               }
             ],
             series: [
               {
-                name: '有效数据',
-                type: 'line',
+                name: "有效数据",
+                type: "line",
                 smooth: true,
-                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
                 data: [300, 280, 290, 310, 320, 270, 230]
               }
             ]
           },
           uselessDataTrendChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             title: {
-              text: '无效数据',
-              textStyle:{
-                color:'#EEE'
+              text: "无效数据",
+              textStyle: {
+                color: "#EEE"
               }
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'axis'
+              trigger: "axis"
             },
             toolbox: {
               show: true
@@ -145,22 +152,22 @@ export default {
             calculable: true,
             xAxis: [
               {
-                type: 'category',
+                type: "category",
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
               }
             ],
             yAxis: [
               {
-                type: 'value'
+                type: "value"
               }
             ],
             series: [
               {
-                name: '无效数据',
-                type: 'line',
+                name: "无效数据",
+                type: "line",
                 smooth: true,
-                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
                 data: [10, 13, 12, 14, 15, 16, 20]
               }
             ]
@@ -170,37 +177,45 @@ export default {
               formatter: "{a} <br/>{b} : {c}%"
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             series: [
               {
-                name: 'CPU使用率',
-                type: 'gauge',
-                splitNumber: 10,       // 分割段数，默认为5
-                axisLine: {            // 坐标轴线
-                  lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                name: "CPU使用率",
+                type: "gauge",
+                splitNumber: 10, // 分割段数，默认为5
+                axisLine: {
+                  // 坐标轴线
+                  lineStyle: {
+                    // 属性lineStyle控制线条样式
+                    color: [[0.2, "#228b22"], [0.8, "#48b"], [1, "#ff4500"]],
                     width: 8
                   }
                 },
-                axisTick: {            // 坐标轴小标记
-                  splitNumber: 10,   // 每份split细分多少段
-                  length: 12,        // 属性length控制线长
-                  lineStyle: {       // 属性lineStyle控制线条样式
-                    color: 'auto'
+                axisTick: {
+                  // 坐标轴小标记
+                  splitNumber: 10, // 每份split细分多少段
+                  length: 12, // 属性length控制线长
+                  lineStyle: {
+                    // 属性lineStyle控制线条样式
+                    color: "auto"
                   }
                 },
-                axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
-                  textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    color: 'auto'
+                axisLabel: {
+                  // 坐标轴文本标签，详见axis.axisLabel
+                  textStyle: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: "auto"
                   }
                 },
-                splitLine: {           // 分隔线
-                  show: true,        // 默认显示，属性show控制显示与否
-                  length: 30,         // 属性length控制线长
-                  lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    color: 'auto'
+                splitLine: {
+                  // 分隔线
+                  show: true, // 默认显示，属性show控制显示与否
+                  length: 30, // 属性length控制线长
+                  lineStyle: {
+                    // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: "auto"
                   }
                 },
                 pointer: {
@@ -208,107 +223,110 @@ export default {
                 },
                 title: {
                   show: true,
-                  textStyle:{
-                    color:'#EEE'
+                  textStyle: {
+                    color: "#EEE"
                   },
-                  offsetCenter: [0, '-40%'],       // x, y，单位px
-                  textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    fontWeight: 'bolder',
-                    color: 'auto',
+                  offsetCenter: [0, "-40%"], // x, y，单位px
+                  textStyle: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: "bolder",
+                    color: "auto"
                   }
                 },
                 detail: {
-                  formatter: '{value}%',
-                  textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    color: 'auto',
-                    fontWeight: 'bolder'
+                  formatter: "{value}%",
+                  textStyle: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: "auto",
+                    fontWeight: "bolder"
                   }
                 },
-                data: [{value: 90, name: '内存比例'}]
+                data: [{ value: 90, name: "内存比例" }]
               }
             ]
           },
           cpuRateChartDataOption: {
-            color:['#67C23A','#E6A23C'],
+            color: ["#67C23A", "#E6A23C"],
             title: {
-              text: 'CPU核数比例',
-              x: 'center',
-              textStyle:{
-                color:'#EEE'
+              text: "CPU核数比例",
+              x: "center",
+              textStyle: {
+                color: "#EEE"
               }
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'auto'
+              fontWeight: "bolder",
+              color: "auto"
             },
             tooltip: {
-              trigger: 'item',
+              trigger: "item",
               formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
             legend: {
-              orient: 'vertical',
-              x: 'left',
-              data: ['空闲CPU', '繁忙CPU'],
+              orient: "vertical",
+              x: "left",
+              data: ["空闲CPU", "繁忙CPU"],
               textStyle: {
-                fontWeight: 'bolder',
-                color:'auto'
+                fontWeight: "bolder",
+                color: "auto"
               }
             },
             calculable: true,
             series: [
               {
-                name: 'CPU比例信息',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
+                name: "CPU比例信息",
+                type: "pie",
+                radius: "55%",
+                center: ["50%", "60%"],
                 data: [
-                  {value: 10, name: '空闲CPU'},
-                  {value: 90, name: '繁忙CPU'}
+                  { value: 10, name: "空闲CPU" },
+                  { value: 90, name: "繁忙CPU" }
                 ]
               }
             ]
           },
           batchProcessTimeChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'axis',
-              axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+              trigger: "axis",
+              axisPointer: {
+                // 坐标轴指示器，坐标轴触发有效
+                type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
               }
             },
             legend: {
-              data: ['每批次处理时间（s）'],
+              data: ["每批次处理时间（s）"],
               textStyle: {
-                fontWeight: 'bolder',
-                color:'#aaa'
+                fontWeight: "bolder",
+                color: "#aaa"
               }
             },
             grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
+              left: "3%",
+              right: "4%",
+              bottom: "3%",
               containLabel: true
             },
             xAxis: {
-              type: 'value'
+              type: "value"
             },
             yAxis: {
-              type: 'category',
-              data: ['批次1', '批次2', '批次3', '批次4', '批次5']
+              type: "category",
+              data: ["批次1", "批次2", "批次3", "批次4", "批次5"]
             },
             series: [
               {
-                name: '每批次处理时间（s）',
-                type: 'bar',
-                stack: '总量',
+                name: "每批次处理时间（s）",
+                type: "bar",
+                stack: "总量",
                 label: {
                   normal: {
                     show: true,
-                    position: 'insideRight'
+                    position: "insideRight"
                   }
                 },
                 data: [50, 45, 49, 55, 51]
@@ -316,74 +334,74 @@ export default {
             ]
           },
           streamEventsOutputDataChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             title: {
-              text: '作业流事件处理数据量',
-              textStyle:{
-                color:'#EEE'
+              text: "作业流事件处理数据量",
+              textStyle: {
+                color: "#EEE"
               },
-              subtext: 'Demo'
+              subtext: "Demo"
             },
-            textStyle:{
-                color:'#AAA'
+            textStyle: {
+              color: "#AAA"
             },
-            tooltip : {
-                trigger: 'axis'
+            tooltip: {
+              trigger: "axis"
             },
             legend: {
-              data:['demo1','event2'],
-              textStyle:{
-                color:'#AAA'
+              data: ["demo1", "event2"],
+              textStyle: {
+                color: "#AAA"
               }
             },
-            calculable : true,
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
-                }
+            calculable: true,
+            xAxis: [
+              {
+                type: "category",
+                boundaryGap: false,
+                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+              }
             ],
             yAxis: {
-              type: 'value'
+              type: "value"
             },
             series: [
-                 {
-                    name:'demo1',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[10, 12, 21, 54, 260, 830, 710]
-                },
-                {
-                    name:'event2',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[30, 182, 434, 791, 390, 30, 10]
-                }
+              {
+                name: "demo1",
+                type: "line",
+                smooth: true,
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
+                data: [10, 12, 21, 54, 260, 830, 710]
+              },
+              {
+                name: "event2",
+                type: "line",
+                smooth: true,
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
+                data: [30, 182, 434, 791, 390, 30, 10]
+              }
             ]
           }
         },
 
         {
           index: 1,
-          steamflowchartpath:'../../static/pics/evt2.png',
-          data_statistic: {"success": 3000, "fail": 200},
+          steamflowchartpath: "../../static/pics/evt2.png",
+          data_statistic: { success: 3000, fail: 200 },
           usefulDataTrendChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             title: {
-              text: '有效数据',
-              textStyle:{
-                color:'#EEE'
-              }              
+              text: "有效数据",
+              textStyle: {
+                color: "#EEE"
+              }
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'axis'
+              trigger: "axis"
             },
             toolbox: {
               show: true
@@ -391,40 +409,40 @@ export default {
             calculable: true,
             xAxis: [
               {
-                type: 'category',
+                type: "category",
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
               }
             ],
             yAxis: [
               {
-                type: 'value'
+                type: "value"
               }
             ],
             series: [
               {
-                name: '有效数据',
-                type: 'line',
+                name: "有效数据",
+                type: "line",
                 smooth: true,
-                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
                 data: [400, 380, 390, 410, 220, 370, 430]
               }
             ]
           },
           uselessDataTrendChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             title: {
-              text: '无效数据',
-              textStyle:{
-                color:'#EEE'
+              text: "无效数据",
+              textStyle: {
+                color: "#EEE"
               }
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'axis'
+              trigger: "axis"
             },
             toolbox: {
               show: true
@@ -432,22 +450,22 @@ export default {
             calculable: true,
             xAxis: [
               {
-                type: 'category',
+                type: "category",
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
               }
             ],
             yAxis: [
               {
-                type: 'value'
+                type: "value"
               }
             ],
             series: [
               {
-                name: '无效数据',
-                type: 'line',
+                name: "无效数据",
+                type: "line",
                 smooth: true,
-                itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
                 data: [20, 33, 12, 24, 25, 16, 40]
               }
             ]
@@ -457,37 +475,45 @@ export default {
               formatter: "{a} <br/>{b} : {c}%"
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             series: [
               {
-                name: 'CPU使用率',
-                type: 'gauge',
-                splitNumber: 10,       // 分割段数，默认为5
-                axisLine: {            // 坐标轴线
-                  lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                name: "CPU使用率",
+                type: "gauge",
+                splitNumber: 10, // 分割段数，默认为5
+                axisLine: {
+                  // 坐标轴线
+                  lineStyle: {
+                    // 属性lineStyle控制线条样式
+                    color: [[0.2, "#228b22"], [0.8, "#48b"], [1, "#ff4500"]],
                     width: 8
                   }
                 },
-                axisTick: {            // 坐标轴小标记
-                  splitNumber: 10,   // 每份split细分多少段
-                  length: 12,        // 属性length控制线长
-                  lineStyle: {       // 属性lineStyle控制线条样式
-                    color: 'auto'
+                axisTick: {
+                  // 坐标轴小标记
+                  splitNumber: 10, // 每份split细分多少段
+                  length: 12, // 属性length控制线长
+                  lineStyle: {
+                    // 属性lineStyle控制线条样式
+                    color: "auto"
                   }
                 },
-                axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
-                  textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    color: 'auto'
+                axisLabel: {
+                  // 坐标轴文本标签，详见axis.axisLabel
+                  textStyle: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: "auto"
                   }
                 },
-                splitLine: {           // 分隔线
-                  show: true,        // 默认显示，属性show控制显示与否
-                  length: 30,         // 属性length控制线长
-                  lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    color: 'auto'
+                splitLine: {
+                  // 分隔线
+                  show: true, // 默认显示，属性show控制显示与否
+                  length: 30, // 属性length控制线长
+                  lineStyle: {
+                    // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: "auto"
                   }
                 },
                 pointer: {
@@ -495,107 +521,110 @@ export default {
                 },
                 title: {
                   show: true,
-                  textStyle:{
-                    color:'#EEE'
+                  textStyle: {
+                    color: "#EEE"
                   },
-                  offsetCenter: [0, '-40%'],       // x, y，单位px
-                  textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    fontWeight: 'bolder',
-                    color: 'auto',
+                  offsetCenter: [0, "-40%"], // x, y，单位px
+                  textStyle: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: "bolder",
+                    color: "auto"
                   }
                 },
                 detail: {
-                  formatter: '{value}%',
-                  textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                    color: 'auto',
-                    fontWeight: 'bolder'
+                  formatter: "{value}%",
+                  textStyle: {
+                    // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    color: "auto",
+                    fontWeight: "bolder"
                   }
                 },
-                data: [{value: 80, name: '内存比例'}]
+                data: [{ value: 80, name: "内存比例" }]
               }
             ]
           },
           cpuRateChartDataOption: {
-            color:['#67C23A','#E6A23C'],
+            color: ["#67C23A", "#E6A23C"],
             title: {
-              text: 'CPU核数比例',
-              x: 'center',
-              textStyle:{
-                color:'#EEE'
+              text: "CPU核数比例",
+              x: "center",
+              textStyle: {
+                color: "#EEE"
               }
             },
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'item',
+              trigger: "item",
               formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
             legend: {
-              orient: 'vertical',
-              x: 'left',
-              data: ['空闲CPU', '繁忙CPU'],
+              orient: "vertical",
+              x: "left",
+              data: ["空闲CPU", "繁忙CPU"],
               textStyle: {
-                fontWeight: 'bolder',
-                color:'#aaa'
+                fontWeight: "bolder",
+                color: "#aaa"
               }
             },
             calculable: true,
             series: [
               {
-                name: 'CPU比例信息',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
+                name: "CPU比例信息",
+                type: "pie",
+                radius: "55%",
+                center: ["50%", "60%"],
                 data: [
-                  {value: 30, name: '空闲CPU'},
-                  {value: 70, name: '繁忙CPU'}
+                  { value: 30, name: "空闲CPU" },
+                  { value: 70, name: "繁忙CPU" }
                 ]
               }
             ]
           },
           batchProcessTimeChartDataOption: {
-            color:['#67C23A','#67C23A'],
+            color: ["#67C23A", "#67C23A"],
             textStyle: {
-              fontWeight: 'bolder',
-              color:'#aaa'
+              fontWeight: "bolder",
+              color: "#aaa"
             },
             tooltip: {
-              trigger: 'axis',
-              axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+              trigger: "axis",
+              axisPointer: {
+                // 坐标轴指示器，坐标轴触发有效
+                type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
               }
             },
             legend: {
-              data: ['每批次处理时间（s）'],
+              data: ["每批次处理时间（s）"],
               textStyle: {
-                fontWeight: 'bolder',
-                color:'#aaa'
+                fontWeight: "bolder",
+                color: "#aaa"
               }
             },
             grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
+              left: "3%",
+              right: "4%",
+              bottom: "3%",
               containLabel: true
             },
             xAxis: {
-              type: 'value'
+              type: "value"
             },
             yAxis: {
-              type: 'category',
-              data: ['批次1', '批次2', '批次3', '批次4', '批次5']
+              type: "category",
+              data: ["批次1", "批次2", "批次3", "批次4", "批次5"]
             },
             series: [
               {
-                name: '每批次处理时间（s）',
-                type: 'bar',
-                stack: '总量',
+                name: "每批次处理时间（s）",
+                type: "bar",
+                stack: "总量",
                 label: {
                   normal: {
                     show: true,
-                    position: 'insideRight'
+                    position: "insideRight"
                   }
                 },
                 data: [35, 25, 45, 50, 40]
@@ -603,64 +632,63 @@ export default {
             ]
           },
           streamEventsOutputDataChartDataOption: {
-            color:['#67C23A','#57B22A','#47A21A'],
+            color: ["#67C23A", "#57B22A", "#47A21A"],
             title: {
-              text: '作业流事件处理数据量',
-              textStyle:{
-                color:'#EEE'
+              text: "作业流事件处理数据量",
+              textStyle: {
+                color: "#EEE"
               },
-              subtext: 'Demo'
+              subtext: "Demo"
             },
-            textStyle:{
-              color:'#AAA'
+            textStyle: {
+              color: "#AAA"
             },
-            tooltip : {
-                trigger: 'axis'
+            tooltip: {
+              trigger: "axis"
             },
             legend: {
-                data:['evt1001','evt1002','测试名称2'],
-                color:['#67C23A','#57B22A','#47A21A'],
-                textStyle:{
-                  color:'#AAA'
-                }
+              data: ["evt1001", "evt1002", "测试名称2"],
+              color: ["#67C23A", "#57B22A", "#47A21A"],
+              textStyle: {
+                color: "#AAA"
+              }
             },
-            calculable : true,
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
-                }
+            calculable: true,
+            xAxis: [
+              {
+                type: "category",
+                boundaryGap: false,
+                data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+              }
             ],
             yAxis: {
-              type: 'value'
+              type: "value"
             },
             series: [
-                 {
-                    name:'evt1001',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[30, 22, 25, 29, 160, 120, 210]
-                },
-                {
-                    name:'evt1002',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[90, 120, 234, 331, 290, 40, 80]
-                },
-                {
-                    name:'测试名称2',
-                    type:'line',
-                    smooth:true,
-                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                    data:[120, 182, 134, 291, 90, 230, 110]
-                }
+              {
+                name: "evt1001",
+                type: "line",
+                smooth: true,
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
+                data: [30, 22, 25, 29, 160, 120, 210]
+              },
+              {
+                name: "evt1002",
+                type: "line",
+                smooth: true,
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
+                data: [90, 120, 234, 331, 290, 40, 80]
+              },
+              {
+                name: "测试名称2",
+                type: "line",
+                smooth: true,
+                itemStyle: { normal: { areaStyle: { type: "default" } } },
+                data: [120, 182, 134, 291, 90, 230, 110]
+              }
             ]
           }
-        },
-
+        }
       ]
     };
   },
@@ -668,47 +696,77 @@ export default {
     this.updateCharts();
   },
   methods: {
-    updateCharts:function(){
-        let usefulDataTrendChart = this.$echarts.init(document.getElementById('usefulDataTrendChart'));
-        usefulDataTrendChart.setOption(this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption);
-        let uselessDataTrendChart = this.$echarts.init(document.getElementById('uselessDataTrendChart'));
-        uselessDataTrendChart.setOption(this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption);
-        let memoryRateChart = this.$echarts.init(document.getElementById('memoryRateChart'));
-        memoryRateChart.setOption(this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption);
-        let cpuRateChart = this.$echarts.init(document.getElementById('cpuRateChart'));
-        cpuRateChart.setOption(this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption);
-        let batchProcessTimeChart = this.$echarts.init(document.getElementById('batchProcessTimeChart'));
-        batchProcessTimeChart.setOption(this.allStreamsDataItems[this.dataIndex].batchProcessTimeChartDataOption);
-        let streamEventsOutputDataChart = this.$echarts.init(document.getElementById('streamEventsOutputDataChart'));
-        streamEventsOutputDataChart.setOption(this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption);
+    updateCharts: function() {
+      let usefulDataTrendChart = this.$echarts.init(
+        document.getElementById("usefulDataTrendChart")
+      );
+      usefulDataTrendChart.setOption(
+        this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption
+      );
+      let uselessDataTrendChart = this.$echarts.init(
+        document.getElementById("uselessDataTrendChart")
+      );
+      uselessDataTrendChart.setOption(
+        this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption
+      );
+      let memoryRateChart = this.$echarts.init(
+        document.getElementById("memoryRateChart")
+      );
+      memoryRateChart.setOption(
+        this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption
+      );
+      let cpuRateChart = this.$echarts.init(
+        document.getElementById("cpuRateChart")
+      );
+      cpuRateChart.setOption(
+        this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption
+      );
+      let batchProcessTimeChart = this.$echarts.init(
+        document.getElementById("batchProcessTimeChart")
+      );
+      batchProcessTimeChart.setOption(
+        this.allStreamsDataItems[this.dataIndex].batchProcessTimeChartDataOption
+      );
+      let streamEventsOutputDataChart = this.$echarts.init(
+        document.getElementById("streamEventsOutputDataChart")
+      );
+      streamEventsOutputDataChart.setOption(
+        this.allStreamsDataItems[this.dataIndex]
+          .streamEventsOutputDataChartDataOption
+      );
     },
-    updateDataIndex: function (incrementStep) {
-      console.log('update dataIndex');
+    updateDataIndex: function(incrementStep) {
+      console.log("update dataIndex");
 
       if (this.dataIndex + incrementStep < 0) {
-        this.dataIndex = this.dataIndex + incrementStep + this.allStreamsDataItems.length;
-      } else if (this.dataIndex + incrementStep >= this.allStreamsDataItems.length) {
-        this.dataIndex = this.dataIndex + incrementStep - this.allStreamsDataItems.length;
+        this.dataIndex =
+          this.dataIndex + incrementStep + this.allStreamsDataItems.length;
+      } else if (
+        this.dataIndex + incrementStep >=
+        this.allStreamsDataItems.length
+      ) {
+        this.dataIndex =
+          this.dataIndex + incrementStep - this.allStreamsDataItems.length;
       } else {
         this.dataIndex = this.dataIndex + incrementStep;
       }
-      console.log('updated index is :', this.dataIndex);
+      console.log("updated index is :", this.dataIndex);
       this.updateCharts();
     },
-    goPrev: function () {
-      console.log('goPrev');
+    goPrev: function() {
+      console.log("goPrev");
       this.updateDataIndex(-1);
       this.$refs.carousel.prev();
     },
-    goNext: function () {
-      console.log('goNext');
+    goNext: function() {
+      console.log("goNext");
       this.updateDataIndex(1);
       this.$refs.carousel.next();
     }
   },
   computed: {
     background() {
-      return require('../../static/pics/' + this.id + '.png')
+      return require("../../static/pics/" + this.id + ".png");
     }
   }
 };
@@ -716,84 +774,79 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .box-card {
-      margin-top:20px;
-  }
-  .el-row {
-    margin-bottom: 20px;
-  }
-  .el-col {
-    border-radius: 4px;
-  }
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
-  }
-  .row-bg {
-    padding: 10px 0;
-  }
+.box-card {
+  margin-top: 20px;
+}
+.el-row {
+  margin-bottom: 20px;
+}
+.el-col {
+  border-radius: 4px;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
+.row-bg {
+  padding: 10px 0;
+}
 
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
-  }
-  
-  .el-carousel__item {
-    background-color: #182028;
-  }
-  
-  .el-carousel__button {
-      background:red;
-  }
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 18px;
+  opacity: 0.75;
+  line-height: 300px;
+  margin: 0;
+}
 
+.el-carousel__item {
+  background-color: #182028;
+}
 
-  .demo-color-box {
-      border-radius:4px;
-      padding:10px;
-      margin:5px 5px 5px 5px;
-      height:75px;
-      box-sizing:border-box;
-      color:#FFF;
-      font-size:10px;
-  }
+.el-carousel__button {
+  background: red;
+}
 
-  .demo-color-box .value {
-      font-size:16px;
-      opacity:.69;
-      line-height:40px;
-      font-size:24px;
-  }
+.demo-color-box {
+  border-radius: 4px;
+  padding: 10px;
+  margin: 5px 5px 5px 5px;
+  height: 75px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 10px;
+}
 
-  .bg-danger {
-      background:#f56c6c;
-  }
+.demo-color-box .value {
+  font-size: 16px;
+  opacity: 0.69;
+  line-height: 40px;
+  font-size: 24px;
+}
 
-  .bg-success {
-      background:#67c23a;
-  }
+.bg-danger {
+  background: #f56c6c;
+}
 
-  .bg-info {
-      background:#909399;
-  }
+.bg-success {
+  background: #67c23a;
+}
 
-  .bg-blue {
-      background:#409EFF;
-  }
+.bg-info {
+  background: #909399;
+}
 
-  .goPrevArrow {
-      float:left;
-      margin-top:200px;    
-  }
+.bg-blue {
+  background: #409eff;
+}
 
-  .goNextArrow {
-      float:right;
-      margin-top:200px;
-  }
+.goPrevArrow {
+  float: left;
+  margin-top: 200px;
+}
 
-
-
-  
+.goNextArrow {
+  float: right;
+  margin-top: 200px;
+}
 </style>
