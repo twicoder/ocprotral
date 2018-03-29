@@ -276,7 +276,7 @@
   }
 
   h1, h2, h3{
-    color: white;
+    color: white !important;
   }
 
   .el-menu-item-group .el-menu-item-group__title{
