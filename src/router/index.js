@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import LogSearch from '@/components/LogSearch'
 import OCSP from '@/components/OCSP'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [

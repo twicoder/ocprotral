@@ -78,6 +78,14 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader?jQuery!expose-loader?$'
+      },
+      {
+        test: require.resolve('uikit'),
+        loader: 'expose-loader?UIkit'
       }
     ]
   },
