@@ -85,13 +85,14 @@ export default {
     return {
       title: "OCSP",
       dataIndex: 0,
+      myInterval:null,
       allStreamsDataItems: [
         {
           index: 0,
           steamflowchartpath: "../../static/pics/evt1.png",
           data_statistic: { success: 2000, fail: 100 },
           usefulDataTrendChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#E6A23C", "#E6A23C"],
             title: {
               text: "有效数据",
               textStyle: {
@@ -132,7 +133,7 @@ export default {
             ]
           },
           uselessDataTrendChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#F6B23C", "#67C23A"],
             title: {
               text: "无效数据",
               textStyle: {
@@ -286,7 +287,7 @@ export default {
             ]
           },
           batchProcessTimeChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#A6922C", "#67C23A"],
             textStyle: {
               fontWeight: "bolder",
               color: "#aaa"
@@ -334,7 +335,7 @@ export default {
             ]
           },
           streamEventsOutputDataChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#F6F2AC", "#A7723A"],
             title: {
               text: "作业流事件处理数据量",
               textStyle: {
@@ -389,7 +390,7 @@ export default {
           steamflowchartpath: "../../static/pics/evt2.png",
           data_statistic: { success: 3000, fail: 200 },
           usefulDataTrendChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#E6A23C", "#67C23A"],
             title: {
               text: "有效数据",
               textStyle: {
@@ -430,7 +431,7 @@ export default {
             ]
           },
           uselessDataTrendChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#F6B23C", "#67C23A"],
             title: {
               text: "无效数据",
               textStyle: {
@@ -584,7 +585,7 @@ export default {
             ]
           },
           batchProcessTimeChartDataOption: {
-            color: ["#67C23A", "#67C23A"],
+            color: ["#A6922C", "#67C23A"],
             textStyle: {
               fontWeight: "bolder",
               color: "#aaa"
@@ -632,7 +633,7 @@ export default {
             ]
           },
           streamEventsOutputDataChartDataOption: {
-            color: ["#67C23A", "#57B22A", "#47A21A"],
+            color: ["#F6F2AC", "#A7723A","#C7A28A"],
             title: {
               text: "作业流事件处理数据量",
               textStyle: {
@@ -694,6 +695,20 @@ export default {
   },
   mounted() {
     this.updateCharts();
+    if(this.myInterval){
+      clearInterval(this.myInterval);
+    }
+    this.myInterval = setInterval(()=>{
+      this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+      this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
+
+      this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+
+      this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
+      this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
+
+      this.updateCharts();
+    },2000);
   },
   methods: {
     updateCharts: function() {
