@@ -693,6 +693,11 @@ export default {
       ]
     };
   },
+  destroyed(){
+    if(this.myInterval){
+      clearInterval(this.myInterval);
+    }
+  },
   mounted() {
     this.updateCharts();
     if(this.myInterval){

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import LogSearch from '@/components/LogSearch'
 import OCSP from '@/components/OCSP'
+import Empty from '@/components/Empty'
 
 Vue.use(Router);
 
