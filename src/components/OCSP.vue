@@ -92,7 +92,7 @@ export default {
           steamflowchartpath: "../../static/pics/evt1.png",
           data_statistic: { success: 2000, fail: 100 },
           usefulDataTrendChartDataOption: {
-            color: ["#E6A23C", "#E6A23C"],
+            color: ["#640346", "#721B6A"],
             title: {
               text: "有效数据",
               textStyle: {
@@ -133,7 +133,7 @@ export default {
             ]
           },
           uselessDataTrendChartDataOption: {
-            color: ["#F6B23C", "#67C23A"],
+            color: ["#721B6A", "#67C23A"],
             title: {
               text: "无效数据",
               textStyle: {
@@ -242,7 +242,7 @@ export default {
                     fontWeight: "bolder"
                   }
                 },
-                data: [{ value: 90, name: "内存比例" }]
+                data: [{ value: 70, name: "内存比例" }]
               }
             ]
           },
@@ -266,7 +266,7 @@ export default {
             legend: {
               orient: "vertical",
               x: "left",
-              data: ["空闲CPU", "繁忙CPU"],
+              data: ["流ii", "流testspark_aa"],
               textStyle: {
                 fontWeight: "bolder",
                 color: "auto"
@@ -280,14 +280,14 @@ export default {
                 radius: "55%",
                 center: ["50%", "60%"],
                 data: [
-                  { value: 10, name: "空闲CPU" },
-                  { value: 90, name: "繁忙CPU" }
+                  { value: 10, name: "流ii" },
+                  { value: 90, name: "流testspark_aa" }
                 ]
               }
             ]
           },
           batchProcessTimeChartDataOption: {
-            color: ["#A6922C", "#67C23A"],
+            color: ["#6BF5F5", "#67C23A"],
             textStyle: {
               fontWeight: "bolder",
               color: "#aaa"
@@ -335,7 +335,7 @@ export default {
             ]
           },
           streamEventsOutputDataChartDataOption: {
-            color: ["#F6F2AC", "#A7723A"],
+            color: ["#983C8F", "#2F81C4"],
             title: {
               text: "作业流事件处理数据量",
               textStyle: {
@@ -390,7 +390,7 @@ export default {
           steamflowchartpath: "../../static/pics/evt2.png",
           data_statistic: { success: 3000, fail: 200 },
           usefulDataTrendChartDataOption: {
-            color: ["#E6A23C", "#67C23A"],
+            color: ["#640346", "#67C23A"],
             title: {
               text: "有效数据",
               textStyle: {
@@ -431,7 +431,7 @@ export default {
             ]
           },
           uselessDataTrendChartDataOption: {
-            color: ["#F6B23C", "#67C23A"],
+            color: ["#721B6A", "#67C23A"],
             title: {
               text: "无效数据",
               textStyle: {
@@ -540,7 +540,7 @@ export default {
                     fontWeight: "bolder"
                   }
                 },
-                data: [{ value: 80, name: "内存比例" }]
+                data: [{ value: 30, name: "内存比例" }]
               }
             ]
           },
@@ -585,7 +585,7 @@ export default {
             ]
           },
           batchProcessTimeChartDataOption: {
-            color: ["#A6922C", "#67C23A"],
+            color: ["#6BF5F5", "#67C23A"],
             textStyle: {
               fontWeight: "bolder",
               color: "#aaa"
@@ -633,7 +633,7 @@ export default {
             ]
           },
           streamEventsOutputDataChartDataOption: {
-            color: ["#F6F2AC", "#A7723A","#C7A28A"],
+            color: ["#983C8F", "#2F81C4","#A3BE4C"],
             title: {
               text: "作业流事件处理数据量",
               textStyle: {
@@ -699,16 +699,26 @@ export default {
       clearInterval(this.myInterval);
     }
     this.myInterval = setInterval(()=>{
-      this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-      this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
+      // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+      // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
 
-      this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-
+      // this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
       this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
       this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
 
+      this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.shift();
+      this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*300)));
+      this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.shift();
+      this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*30)));
+
+      for(var index in this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series){
+        this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.shift();
+        this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.push(Math.floor((Math.random()*300*(1+index) )));
+      }
+
+
       this.updateCharts();
-    },2000);
+    },1000);
   },
   methods: {
     updateCharts: function() {
