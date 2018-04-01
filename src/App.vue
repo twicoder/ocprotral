@@ -111,7 +111,7 @@
           <span slot="title">运营管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="1-1">营销管理中心</el-menu-item>
+          <el-menu-item index="/">营销管理中心</el-menu-item>
           <el-menu-item index="1-2">智能推荐中心</el-menu-item>
           <el-menu-item index="1-3">标签管理中心</el-menu-item>
         </el-menu-item-group>
