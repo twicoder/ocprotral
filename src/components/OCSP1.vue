@@ -9,11 +9,11 @@
         <el-row :gutter="5">
             <el-col :span="6">
                 <div class="grid-content bg-purple">
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
 
                         <div id="usefulTotalData" style="height: 70px;">
                             <div class="el-col el-col-12">
-                                <div class="demo-color-box bg-numbers">
+                                <div class="demo-color-box bg-success">
                                 有效数据总数
                                     <div class="value">
                                         {{allStreamsDataItems[dataIndex].data_statistic.success}}
@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="el-col el-col-12">
-                                <div class="demo-color-box bg-numbers">
+                                <div class="demo-color-box bg-info">
                                 无效数据总数
                                 <div class="value">
                                         {{allStreamsDataItems[dataIndex].data_statistic.fail}}
@@ -31,18 +31,20 @@
                             
                         </div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
                         <div id="usefulDataTrendChart" style="height: 350px;"></div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
                         <div id="uselessDataTrendChart" style="height: 250px;"></div>
                     </el-card>
                 </div>
             </el-col>
             <el-col :span="12">
                 <div class="grid-content bg-purple">
-                    <el-card class="box-card noborder">
-                        <div><h3><b>作业流业务配置图</b></h3></div>
+                    <el-card class="box-card">
+                        <div slot="header">
+                            <span><b style="font-size:18px;">作业流业务配置图</b></span>
+                        </div>
                         <div id="myChart1" style="height: 408px;">
                             <a v-on:click="goPrev()" class="el-icon-arrow-left goPrevArrow"></a>
                             <a v-on:click="goNext()" class="el-icon-arrow-right goNextArrow"></a>
@@ -53,20 +55,20 @@
                             </el-carousel>
                         </div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
                         <div id="streamEventsOutputDataChart" style="height: 250px;"></div>
                     </el-card>
                 </div>
             </el-col>
             <el-col :span="6">
                 <div class="grid-content bg-purple">
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
                         <div id="batchProcessTimeChart" style="height: 140px;"></div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
                         <div id="memoryRateChart" style="height: 280px;"></div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card">
                         <div id="cpuRateChart" style="height: 250px;"></div>
                     </el-card>
                 </div>
@@ -77,158 +79,116 @@
     
 </template>
 <script>
-import demodata from "@/data/ocspdemodata.js";
-import echarts from "echarts";
+import demodata from "@/data/ocspdemodata.js"
 
-var base = +new Date(2010, 1, 1);
-var oneDay = 24 * 3600 * 1000;
+var oneHour = 3600 * 1000;
+var now = +new Date();
+var value = Math.random() * 1000;
 
-function createMockDataForRecord(record) {
-  var usefulData_date = [];
-  var uselessData_date = [];
-  var usefulData_data = [Math.random() * 3000];
-  var uselessData_data = [Math.random() * 300];
-
-  record.data_statistic.success = 0;
-  record.data_statistic.fail = 0;
-
-  for (var i = 1; i < 2000; i++) {
-    var now = new Date((base += oneDay));
-    usefulData_date.push(
-      [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/")
-    );
-    uselessData_date.push(
-      [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/")
-    );
-    var randomSuccessData = Math.round(
-      (Math.random() - 0.5) * 200 + usefulData_data[i - 1]
-    );
-    usefulData_data.push(randomSuccessData > 0 ? randomSuccessData : 0);
-    record.data_statistic.success += randomSuccessData;
-    var randomFailedData = Math.round(
-      (Math.random() - 0.5) * 20 + uselessData_data[i - 1]
-    );
-    uselessData_data.push(randomFailedData > 0 ? randomFailedData : 0);
-    record.data_statistic.fail += randomFailedData;
+function randomData() {
+  now = new Date(+now - oneHour);
+  value = value + Math.random() * 21 - 10;
+  return {
+    name: now.toString(),
+    value: [
+      [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/') ,
+      Math.round(value)
+    ]
   }
-
-  record.usefulDataTrendChartDataOption.series[0].data = usefulData_data;
-  record.usefulDataTrendChartDataOption.xAxis.data = usefulData_date;
-  record.usefulDataTrendChartDataOption.series[0].areaStyle.normal.color = new echarts.graphic.LinearGradient(
-    0,
-    0,
-    0,
-    1,
-    [
-      {
-        offset: 0,
-        color: "rgb(255, 158, 68)"
-      },
-      {
-        offset: 1,
-        color: "rgb(255, 70, 131)"
-      }
-    ]
-  );
-
-  record.uselessDataTrendChartDataOption.series[0].data = uselessData_data;
-  record.uselessDataTrendChartDataOption.xAxis.data = uselessData_date;
-  record.uselessDataTrendChartDataOption.series[0].areaStyle.normal.color = new echarts.graphic.LinearGradient(
-    0,
-    0,
-    0,
-    1,
-    [
-      {
-        offset: 0,
-        color: "rgb(255, 158, 68)"
-      },
-      {
-        offset: 1,
-        color: "rgb(255, 70, 131)"
-      }
-    ]
-  );
-
-  record.batchProcessTimeChartDataOption.series[0].areaStyle.normal.color = new echarts.graphic.LinearGradient(
-    0,
-    0,
-    0,
-    1,
-    [
-      {
-        offset: 0,
-        color: "rgb(255, 158, 68)"
-      },
-      {
-        offset: 1,
-        color: "rgb(255, 70, 131)"
-      }
-    ]
-  );
 }
 
-createMockDataForRecord(demodata[0]);
-createMockDataForRecord(demodata[1]);
+function nextHourData(baseDate){
+  var nextDate = new Date(+new Date(baseDate.value[0]) + oneHour);
+  var nextValue = baseDate.value[1] + Math.random() * 21 - 10;
+  return {
+    name: nextDate.toString(),
+    value: [
+      [nextDate.getFullYear(), nextDate.getMonth() + 1, nextDate.getDate()].join('/') ,
+      Math.round(nextValue)
+    ]
+  }
+}
+
+
+
+
+demodata[0].usefulDataTrendChartDataOption.series[0].data = [];
+demodata[0].uselessDataTrendChartDataOption.series[0].data = [];
+demodata[0].data_statistic.success = 0;
+demodata[0].data_statistic.fail = 0;
+for (var i = 0; i < 1000; i++) {
+  var successDataRecord = randomData();
+  var failDataRecord = randomData();
+  demodata[0].usefulDataTrendChartDataOption.series[0].data.unshift(successDataRecord);
+  demodata[0].uselessDataTrendChartDataOption.series[0].data.unshift(failDataRecord);
+  demodata[0].data_statistic.success += successDataRecord.value[1];
+  demodata[0].data_statistic.fail += failDataRecord.value[1];
+}
+
 
 export default {
-  name: "OCSP",
+  name: "OCSP1",
   data() {
     return {
-      title: "OCSP",
+      title: "OCSP1",
       dataIndex: 0,
-      myInterval: null,
+      myInterval:null,
       allStreamsDataItems: demodata
     };
   },
-  destroyed() {
-    if (this.myInterval) {
+  destroyed(){
+    if(this.myInterval){
       clearInterval(this.myInterval);
     }
   },
-  created() {},
+  created(){
+    
+  },
   mounted() {
-    if (this.myInterval) {
+    console.log('mounted():');
+    if(this.myInterval){
       clearInterval(this.myInterval);
     }
-    this.updateCharts();
 
-    // this.myInterval = setInterval(()=>{
-    //   // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-    //   // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
+    this.myInterval = setInterval(()=>{
+      // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+      // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
 
-    //   // this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-    //   // this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
-    //   // this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
+      // this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+      // this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
+      // this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
 
-    //   // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.shift();
-    //   // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*300)));
-    //   // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.shift();
-    //   // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*30)));
+      // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.shift();
+      // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*300)));
+      // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.shift();
+      // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*30)));
 
-    //   // for(var index in this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series){
-    //   //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.shift();
-    //   //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.push(Math.floor((Math.random()*300*(1+index) )));
-    //   // }
+      // for(var index in this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series){
+      //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.shift();
+      //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.push(Math.floor((Math.random()*300*(1+index) )));
+      // }
 
-    //   // this.updateCharts();
-    // },1000);
+      this.updateCharts();
+    },1000);
+
+    
   },
   methods: {
-    updateOneTickData: function() {
-      // var lastStreamUsefulDataTrend = this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data[this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data.length-1];
-      // var lastStreamUselessDataTrend = this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data[this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data.length-1];
-      // var successDataRecord = nextHourData(lastStreamUsefulDataTrend);
-      // var failDataRecord = nextHourData(lastStreamUselessDataTrend);
-      // this.allStreamsDataItems[0].data_statistic.success += successDataRecord.value[1];
-      // this.allStreamsDataItems[0].data_statistic.fail += failDataRecord.value[1];
-      // this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data.shift();
-      // this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data.push(successDataRecord);
-      // this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data.shift();
-      // this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data.push(failDataRecord);
+    updateOneTickData:function(){
+      var lastStreamUsefulDataTrend = this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data[this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data.length-1];
+      var lastStreamUselessDataTrend = this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data[this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data.length-1];
+      var successDataRecord = nextHourData(lastStreamUsefulDataTrend);
+      var failDataRecord = nextHourData(lastStreamUselessDataTrend);
+
+      this.allStreamsDataItems[0].data_statistic.success += successDataRecord.value[1];
+      this.allStreamsDataItems[0].data_statistic.fail += failDataRecord.value[1];
+      this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data.shift();
+      this.allStreamsDataItems[0].usefulDataTrendChartDataOption.series[0].data.push(successDataRecord);
+      this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data.shift();
+      this.allStreamsDataItems[0].uselessDataTrendChartDataOption.series[0].data.push(failDataRecord);
     },
-    updateChartData: function() {
-      for (var i = 0; i < 10; i++) {
+    updateChartData:function(){
+      for(var i=0;i<10;i++){
         this.updateOneTickData();
       }
     },
@@ -276,6 +236,7 @@ export default {
       );
     },
     updateDataIndex: function(incrementStep) {
+
       if (this.dataIndex + incrementStep < 0) {
         this.dataIndex =
           this.dataIndex + incrementStep + this.allStreamsDataItems.length;
@@ -375,10 +336,6 @@ export default {
   background: #409eff;
 }
 
-.bg-numbers {
-  background: #07a965;
-}
-
 .goPrevArrow {
   float: left;
   margin-top: 200px;
@@ -387,9 +344,5 @@ export default {
 .goNextArrow {
   float: right;
   margin-top: 200px;
-}
-
-.noborder {
-  border: 0;
 }
 </style>

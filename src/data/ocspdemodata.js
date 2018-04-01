@@ -4,78 +4,138 @@ let demodata = [
         steamflowchartpath: "../../static/pics/evt1.png",
         data_statistic: { success: 2000, fail: 100 },
         usefulDataTrendChartDataOption: {
-            color: ["#721B6A", "#67C23A"],
-            title: {
-                text: '动态数据 + 时间坐标轴'
+            color: ["#640346", "#67C23A"],
+            textStyle: {
+                fontWeight: "bolder",
+                color: "#aaa"
             },
             tooltip: {
                 trigger: 'axis',
-                formatter: function (params) {
-                    params = params[0];
-                    var date = new Date(params.name);
-                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-                },
-                axisPointer: {
-                    animation: false
+                position: function (pt) {
+                    return [pt[0], '10%'];
                 }
             },
+            title: {
+                left: 'center',
+                text: '有效数据统计图',
+                textStyle: {
+                    fontWeight: "bolder",
+                    color: "#aaa"
+                },
+            },
             xAxis: {
-                type: 'time',
-                splitLine: {
-                    show: false
-                }
+                type: 'category',
+                boundaryGap: false,
+                data: []
             },
             yAxis: {
                 type: 'value',
-                boundaryGap: [0, '100%'],
-                splitLine: {
-                    show: false
-                }
+                boundaryGap: [0, '100%']
             },
-            series: [{
-                name: '模拟数据',
-                type: 'line',
-                showSymbol: false,
-                hoverAnimation: false,
-                data: []
-            }]
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 10
+            }, {
+                start: 0,
+                end: 10,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                }
+            }],
+            series: [
+                {
+                    name:'模拟数据',
+                    type:'line',
+                    smooth:true,
+                    symbol: 'none',
+                    sampling: 'average',
+                    itemStyle: {
+                        normal: {
+                            color: 'rgb(255, 70, 131)'
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: null
+                        }
+                    },
+                    data: []
+                }
+            ]
         },
         uselessDataTrendChartDataOption: {
-            color: ["#721B6A", "#67C23A"],
-            title: {
-                text: '动态数据 + 时间坐标轴'
+            color: ["#640346", "#67C23A"],
+            textStyle: {
+                fontWeight: "bolder",
+                color: "#aaa"
             },
             tooltip: {
                 trigger: 'axis',
-                formatter: function (params) {
-                    params = params[0];
-                    var date = new Date(params.name);
-                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-                },
-                axisPointer: {
-                    animation: false
+                position: function (pt) {
+                    return [pt[0], '10%'];
                 }
             },
+            title: {
+                left: 'center',
+                text: '无效数据统计图',
+                textStyle: {
+                    fontWeight: "bolder",
+                    color: "#aaa"
+                },
+            },
             xAxis: {
-                type: 'time',
-                splitLine: {
-                    show: false
-                }
+                type: 'category',
+                boundaryGap: false,
+                data: []
             },
             yAxis: {
                 type: 'value',
-                boundaryGap: [0, '100%'],
-                splitLine: {
-                    show: false
-                }
+                boundaryGap: [0, '100%']
             },
-            series: [{
-                name: '模拟数据',
-                type: 'line',
-                showSymbol: false,
-                hoverAnimation: false,
-                data: []
-            }]
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 10
+            }, {
+                start: 0,
+                end: 10,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                }
+            }],
+            series: [
+                {
+                    name:'模拟数据',
+                    type:'line',
+                    smooth:true,
+                    symbol: 'none',
+                    sampling: 'average',
+                    itemStyle: {
+                        normal: {
+                            color: 'rgb(255, 70, 131)'
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: null
+                        }
+                    },
+                    data: []
+                }
+            ]
         },
         memoryRateChartDataOption: {
             tooltip: {
@@ -170,7 +230,7 @@ let demodata = [
             legend: {
                 orient: "vertical",
                 x: "left",
-                data: ["流ii", "流testspark_aa"],
+                data: ["流TestA", "流TestB"],
                 textStyle: {
                     fontWeight: "bolder",
                     color: "auto"
@@ -184,8 +244,8 @@ let demodata = [
                     radius: "55%",
                     center: ["50%", "60%"],
                     data: [
-                        { value: 10, name: "流ii" },
-                        { value: 90, name: "流testspark_aa" }
+                        { value: 10, name: "流TestA" },
+                        { value: 90, name: "流TestB" }
                     ]
                 }
             ]
@@ -232,6 +292,11 @@ let demodata = [
                         normal: {
                             show: true,
                             position: "insideRight"
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: null
                         }
                     },
                     data: [50, 45, 49, 55, 51]
@@ -295,83 +360,135 @@ let demodata = [
         data_statistic: { success: 3000, fail: 200 },
         usefulDataTrendChartDataOption: {
             color: ["#640346", "#67C23A"],
-            title: {
-                text: "有效数据",
-                textStyle: {
-                    color: "#EEE"
-                }
-            },
             textStyle: {
                 fontWeight: "bolder",
                 color: "#aaa"
             },
             tooltip: {
-                trigger: "axis"
-            },
-            toolbox: {
-                show: true
-            },
-            calculable: true,
-            xAxis: [
-                {
-                    type: "category",
-                    boundaryGap: false,
-                    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+                trigger: 'axis',
+                position: function (pt) {
+                    return [pt[0], '10%'];
                 }
-            ],
-            yAxis: [
-                {
-                    type: "value"
+            },
+            title: {
+                left: 'center',
+                text: '有效数据统计图',
+                textStyle: {
+                    fontWeight: "bolder",
+                    color: "#aaa"
+                },
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: []
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 10
+            }, {
+                start: 0,
+                end: 10,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
                 }
-            ],
+            }],
             series: [
                 {
-                    name: "有效数据",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [400, 380, 390, 410, 220, 370, 430]
+                    name:'模拟数据',
+                    type:'line',
+                    smooth:true,
+                    symbol: 'none',
+                    sampling: 'average',
+                    itemStyle: {
+                        normal: {
+                            color: 'rgb(255, 70, 131)'
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: null
+                        }
+                    },
+                    data: []
                 }
             ]
         },
         uselessDataTrendChartDataOption: {
-            color: ["#721B6A", "#67C23A"],
-            title: {
-                text: "无效数据",
-                textStyle: {
-                    color: "#EEE"
-                }
-            },
+            color: ["#640346", "#67C23A"],
             textStyle: {
                 fontWeight: "bolder",
                 color: "#aaa"
             },
             tooltip: {
-                trigger: "axis"
-            },
-            toolbox: {
-                show: true
-            },
-            calculable: true,
-            xAxis: [
-                {
-                    type: "category",
-                    boundaryGap: false,
-                    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+                trigger: 'axis',
+                position: function (pt) {
+                    return [pt[0], '10%'];
                 }
-            ],
-            yAxis: [
-                {
-                    type: "value"
+            },
+            title: {
+                left: 'center',
+                text: '无效数据统计图',
+                textStyle: {
+                    fontWeight: "bolder",
+                    color: "#aaa"
+                },
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: []
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 10
+            }, {
+                start: 0,
+                end: 10,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
                 }
-            ],
+            }],
             series: [
                 {
-                    name: "无效数据",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [20, 33, 12, 24, 25, 16, 40]
+                    name:'模拟数据',
+                    type:'line',
+                    smooth:true,
+                    symbol: 'none',
+                    sampling: 'average',
+                    itemStyle: {
+                        normal: {
+                            color: 'rgb(255, 70, 131)'
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: null
+                        }
+                    },
+                    data: []
                 }
             ]
         },
@@ -468,7 +585,7 @@ let demodata = [
             legend: {
                 orient: "vertical",
                 x: "left",
-                data: ["空闲CPU", "繁忙CPU"],
+                data: ["流TestA", "流TestB"],
                 textStyle: {
                     fontWeight: "bolder",
                     color: "#aaa"
@@ -482,8 +599,8 @@ let demodata = [
                     radius: "55%",
                     center: ["50%", "60%"],
                     data: [
-                        { value: 30, name: "空闲CPU" },
-                        { value: 70, name: "繁忙CPU" }
+                        { value: 30, name: "流TestA" },
+                        { value: 70, name: "流TestB" }
                     ]
                 }
             ]
@@ -530,6 +647,11 @@ let demodata = [
                         normal: {
                             show: true,
                             position: "insideRight"
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: null
                         }
                     },
                     data: [35, 25, 45, 50, 40]

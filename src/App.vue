@@ -134,6 +134,7 @@
         <el-menu-item-group>
           <el-menu-item index="3-1">数据集成</el-menu-item>
           <el-menu-item index="OCSP">流处理引擎</el-menu-item>
+          <el-menu-item index="OCSP1">流处理引擎1</el-menu-item>
           <el-menu-item index="3-3">网络爬虫</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -406,4 +407,8 @@
     clear: none !important;
   }
 
+  .mybgimg {
+    background-image: url('../static/starbackground.jpg');
+    background-color: #000000;
+  }
 </style>
