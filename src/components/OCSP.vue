@@ -430,9 +430,7 @@ export default {
   margin: 0;
 }
 
-.el-carousel__item {
-  background-color: #182028;
-}
+
 
 .el-carousel__button {
   background: red;
@@ -488,11 +486,16 @@ export default {
 }
 
 .mycard {
-  -moz-box-shadow:3px 3px 10px #515151; 
-  -webkit-box-shadow:3px 3px 10px #515151; 
-  box-shadow:3px 3px 10px #515151;
+  -moz-box-shadow:3px 3px 10px #aca7b3; 
+  -webkit-box-shadow:3px 3px 10px #aca7b3; 
+  box-shadow:3px 3px 10px #aca7b3;
   border-radius:10px;
   transition: all 0.6s;
+  background:#525369;
+}
+
+.el-carousel__item .is-active .is-animating {
+  background:#525369;
 }
 
 .mycard:hover {
