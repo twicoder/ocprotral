@@ -53,7 +53,7 @@
                         <div id="myChart1" style="height: 425px;">
                             <a v-on:click="goPrev()" class="el-icon-arrow-left goPrevArrow"></a>
                             <a v-on:click="goNext()" class="el-icon-arrow-right goNextArrow"></a>
-                            <el-carousel :autoplay="false"  arrow="never" height="440px" ref="carousel" indicator-position="outside">
+                            <el-carousel :autoplay="false" trigger="click"  arrow="never" height="440px" ref="carousel">
                                 <el-carousel-item v-for="item in allStreamsDataItems" :key="item.index">
                                     <img v-bind:src="item.steamflowchartpath"  alt="作业流图" style="height:100%"/>
                                 </el-carousel-item>
@@ -448,10 +448,9 @@ export default {
 }
 
 .demo-color-box .value {
-  font-size: 16px;
   opacity: 0.69;
   line-height: 40px;
-  font-size: 24px;
+  font-size: 34px;
 }
 
 .bg-danger {
@@ -488,15 +487,15 @@ export default {
 }
 
 .mycard {
-  -moz-box-shadow:5px 0px 20px #515151; 
-  -webkit-box-shadow:5px 0px 20px #515151; 
-  box-shadow:5px 0px 20px #515151;
+  -moz-box-shadow:5px 1px 10px #515151; 
+  -webkit-box-shadow:5px 1px 10px #515151; 
+  box-shadow:5px 1px 10px #515151;
   border-radius:10px;
   transition: all 0.6s;
 }
 
 .mycard:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 </style>
