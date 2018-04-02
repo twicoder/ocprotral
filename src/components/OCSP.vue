@@ -1,15 +1,22 @@
 <template>
-  <el-container>
-    <el-header>
-      <el-row :gutter="20" >
-        <el-col :span="18" :offset="6"><div class=""> <h1 style="display:inline-block;">AISWare Stream Processor</h1><a href="" style="color:grey;margin-left:20px;">访问应用实例</a></div></el-col>
+  <el-container class="">
+    <el-header class="">
+      <el-row :gutter="20" class="">
+        <el-col :span="18" :offset="6">
+          <div class="" style="display:inline-block;">
+            <span class="">
+              <h1 style="display:inline-block;" class="">AISWare Stream Processor</h1>
+              <a href="" style="color:grey;margin-left:20px;">访问应用实例</a>
+            </span>
+          </div>
+        </el-col>
       </el-row>
     </el-header>
     <el-main>
         <el-row :gutter="5">
             <el-col :span="6">
                 <div class="grid-content bg-purple">
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
 
                         <div id="usefulTotalData" style="height: 70px;">
                             <div class="el-col el-col-12">
@@ -31,19 +38,19 @@
                             
                         </div>
                     </el-card>
-                    <el-card class="box-card noborder" id="usefulDataTrendChartParentId">
+                    <el-card class="box-card noborder mycard" id="usefulDataTrendChartParentId">
                         <div id="usefulDataTrendChart" style="height: 350px;"></div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
                         <div id="uselessDataTrendChart" style="height: 250px;"></div>
                     </el-card>
                 </div>
             </el-col>
             <el-col :span="12">
                 <div class="grid-content bg-purple">
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
                         <div><h3><b>作业流业务配置图</b></h3></div>
-                        <div id="myChart1" style="height: 440px;">
+                        <div id="myChart1" style="height: 425px;">
                             <a v-on:click="goPrev()" class="el-icon-arrow-left goPrevArrow"></a>
                             <a v-on:click="goNext()" class="el-icon-arrow-right goNextArrow"></a>
                             <el-carousel :autoplay="false"  arrow="never" height="440px" ref="carousel" indicator-position="outside">
@@ -53,20 +60,20 @@
                             </el-carousel>
                         </div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
                         <div id="streamEventsOutputDataChart" style="height: 250px;"></div>
                     </el-card>
                 </div>
             </el-col>
             <el-col :span="6">
                 <div class="grid-content bg-purple">
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
                         <div id="batchProcessTimeChart" style="height: 140px;"></div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
                         <div id="memoryRateChart" style="height: 280px;"></div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder mycard">
                         <div id="cpuRateChart" style="height: 250px;"></div>
                     </el-card>
                 </div>
@@ -284,8 +291,8 @@ export default {
       // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
 
       // this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-      this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
-      this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
+      this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*100));
+      this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*10));
 
       // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.shift();
       // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*300)));
@@ -398,7 +405,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box-card {
-  margin-top: 5px;
+  margin: 5px;
 }
 .el-row {
   margin-bottom: 20px;
@@ -464,7 +471,6 @@ export default {
 }
 
 .bg-numbers {
-  background: #82DB6C;
 }
 
 .goPrevArrow {
@@ -480,4 +486,12 @@ export default {
 .noborder {
   border: 0;
 }
+
+.mycard {
+  -moz-box-shadow:5px 0px 20px #515151; 
+  -webkit-box-shadow:5px 0px 20px #515151; 
+  box-shadow:5px 0px 20px #515151;
+  border-radius:10px;
+}
+
 </style>
