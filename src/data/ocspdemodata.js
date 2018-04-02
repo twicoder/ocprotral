@@ -138,80 +138,47 @@ let demodata = [
             ]
         },
         memoryRateChartDataOption: {
-            tooltip: {
-                formatter: "{a} <br/>{b} : {c}%"
+            color: ["#7DDB94", "#D7DD6F"],
+            title: {
+                text: "内存比例",
+                x: "center",
+                textStyle: {
+                    color: "#EEE"
+                }
             },
             textStyle: {
                 fontWeight: "bolder",
-                color: "#aaa"
+                color: "auto"
             },
+            tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: "vertical",
+                x: "left",
+                data: ["流TestA", "流TestB"],
+                textStyle: {
+                    fontWeight: "bolder",
+                    color: "auto"
+                }
+            },
+            calculable: true,
             series: [
                 {
-                    name: "CPU使用率",
-                    type: "gauge",
-                    splitNumber: 10, // 分割段数，默认为5
-                    axisLine: {
-                        // 坐标轴线
-                        lineStyle: {
-                            // 属性lineStyle控制线条样式
-                            color: [[0.2, "#228b22"], [0.8, "#48b"], [1, "#ff4500"]],
-                            width: 8
-                        }
-                    },
-                    axisTick: {
-                        // 坐标轴小标记
-                        splitNumber: 10, // 每份split细分多少段
-                        length: 12, // 属性length控制线长
-                        lineStyle: {
-                            // 属性lineStyle控制线条样式
-                            color: "auto"
-                        }
-                    },
-                    axisLabel: {
-                        // 坐标轴文本标签，详见axis.axisLabel
-                        textStyle: {
-                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                            color: "auto"
-                        }
-                    },
-                    splitLine: {
-                        // 分隔线
-                        show: true, // 默认显示，属性show控制显示与否
-                        length: 30, // 属性length控制线长
-                        lineStyle: {
-                            // 属性lineStyle（详见lineStyle）控制线条样式
-                            color: "auto"
-                        }
-                    },
-                    pointer: {
-                        width: 5
-                    },
-                    title: {
-                        show: true,
-                        textStyle: {
-                            color: "#EEE"
-                        },
-                        offsetCenter: [0, "-40%"], // x, y，单位px
-                        textStyle: {
-                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                            fontWeight: "bolder",
-                            color: "auto"
-                        }
-                    },
-                    detail: {
-                        formatter: "{value}%",
-                        textStyle: {
-                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                            color: "auto",
-                            fontWeight: "bolder"
-                        }
-                    },
-                    data: [{ value: 70, name: "内存比例" }]
+                    name: "内存比例信息",
+                    type: "pie",
+                    radius: "55%",
+                    center: ["50%", "60%"],
+                    data: [
+                        { value: 50, name: "流TestA" },
+                        { value: 30, name: "流TestB" }
+                    ]
                 }
             ]
         },
         cpuRateChartDataOption: {
-            color: ["#67C23A", "#E6A23C"],
+            color: ["#67C23A", "#D7DD6F"],
             title: {
                 text: "CPU核数比例",
                 x: "center",
@@ -294,7 +261,7 @@ let demodata = [
                             position: "insideRight"
                         }
                     },
-                    areaStyle: {
+                    itemStyle: {
                         normal: {
                             color: null
                         }
@@ -304,51 +271,65 @@ let demodata = [
             ]
         },
         streamEventsOutputDataChartDataOption: {
-            color: ["#983C8F", "#2F81C4"],
+            color: ["#A9DC6D", "#D37C61"],
             title: {
-                text: "作业流事件处理数据量",
+                text: '作业流事件处理数据量',
                 textStyle: {
-                    color: "#EEE"
-                },
-                subtext: "Demo"
+                    fontWeight: "bolder",
+                    color: "#aaa"
+                }
             },
             textStyle: {
-                color: "#AAA"
+                fontWeight: "bolder",
+                color: "#aaa"
             },
-            tooltip: {
-                trigger: "axis"
+            tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
             },
             legend: {
-                data: ["demo1", "event2"],
+                data:['事件Demo1','事件Demo2'],
                 textStyle: {
-                    color: "#AAA"
+                    color: "#aaa"
                 }
             },
-            calculable: true,
-            xAxis: [
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
                 {
-                    type: "category",
-                    boundaryGap: false,
-                    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+                    type : 'category',
+                    boundaryGap : false,
+                    data : ['周一','周二','周三','周四','周五','周六','周日']
                 }
             ],
-            yAxis: {
-                type: "value"
-            },
-            series: [
+            yAxis : [
                 {
-                    name: "demo1",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [10, 12, 21, 54, 260, 830, 710]
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'事件Demo1',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[120, 132, 101, 134, 90, 230, 210]
                 },
                 {
-                    name: "event2",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [30, 182, 434, 791, 390, 30, 10]
+                    name:'事件Demo2',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[220, 182, 191, 234, 290, 330, 310]
                 }
             ]
         }
@@ -493,80 +474,47 @@ let demodata = [
             ]
         },
         memoryRateChartDataOption: {
-            tooltip: {
-                formatter: "{a} <br/>{b} : {c}%"
+            color: ["#7DDB94", "#D7DD6F"],
+            title: {
+                text: "内存比例",
+                x: "center",
+                textStyle: {
+                    color: "#EEE"
+                }
             },
             textStyle: {
                 fontWeight: "bolder",
-                color: "#aaa"
+                color: "auto"
             },
+            tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: "vertical",
+                x: "left",
+                data: ["流TestA", "流TestB"],
+                textStyle: {
+                    fontWeight: "bolder",
+                    color: "auto"
+                }
+            },
+            calculable: true,
             series: [
                 {
-                    name: "CPU使用率",
-                    type: "gauge",
-                    splitNumber: 10, // 分割段数，默认为5
-                    axisLine: {
-                        // 坐标轴线
-                        lineStyle: {
-                            // 属性lineStyle控制线条样式
-                            color: [[0.2, "#228b22"], [0.8, "#48b"], [1, "#ff4500"]],
-                            width: 8
-                        }
-                    },
-                    axisTick: {
-                        // 坐标轴小标记
-                        splitNumber: 10, // 每份split细分多少段
-                        length: 12, // 属性length控制线长
-                        lineStyle: {
-                            // 属性lineStyle控制线条样式
-                            color: "auto"
-                        }
-                    },
-                    axisLabel: {
-                        // 坐标轴文本标签，详见axis.axisLabel
-                        textStyle: {
-                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                            color: "auto"
-                        }
-                    },
-                    splitLine: {
-                        // 分隔线
-                        show: true, // 默认显示，属性show控制显示与否
-                        length: 30, // 属性length控制线长
-                        lineStyle: {
-                            // 属性lineStyle（详见lineStyle）控制线条样式
-                            color: "auto"
-                        }
-                    },
-                    pointer: {
-                        width: 5
-                    },
-                    title: {
-                        show: true,
-                        textStyle: {
-                            color: "#EEE"
-                        },
-                        offsetCenter: [0, "-40%"], // x, y，单位px
-                        textStyle: {
-                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                            fontWeight: "bolder",
-                            color: "auto"
-                        }
-                    },
-                    detail: {
-                        formatter: "{value}%",
-                        textStyle: {
-                            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                            color: "auto",
-                            fontWeight: "bolder"
-                        }
-                    },
-                    data: [{ value: 30, name: "内存比例" }]
+                    name: "内存比例信息",
+                    type: "pie",
+                    radius: "55%",
+                    center: ["50%", "60%"],
+                    data: [
+                        { value: 40, name: "流TestA" },
+                        { value: 50, name: "流TestB" }
+                    ]
                 }
             ]
         },
         cpuRateChartDataOption: {
-            color: ["#67C23A", "#E6A23C"],
+            color: ["#67C23A", "#D7DD6F"],
             title: {
                 text: "CPU核数比例",
                 x: "center",
@@ -649,7 +597,7 @@ let demodata = [
                             position: "insideRight"
                         }
                     },
-                    areaStyle: {
+                    itemStyle: {
                         normal: {
                             color: null
                         }
@@ -659,59 +607,72 @@ let demodata = [
             ]
         },
         streamEventsOutputDataChartDataOption: {
-            color: ["#983C8F", "#2F81C4", "#A3BE4C"],
+            color: ["#A9DC6D", "#D37C61","#596AD8"],
             title: {
-                text: "作业流事件处理数据量",
+                text: '作业流事件处理数据量',
                 textStyle: {
-                    color: "#EEE"
-                },
-                subtext: "Demo"
+                    fontWeight: "bolder",
+                    color: "#aaa"
+                }
             },
             textStyle: {
-                color: "#AAA"
+                fontWeight: "bolder",
+                color: "#aaa"
             },
-            tooltip: {
-                trigger: "axis"
+            tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
             },
             legend: {
-                data: ["evt1001", "evt1002", "测试名称2"],
-                color: ["#67C23A", "#57B22A", "#47A21A"],
+                data:['事件Demo1','事件Demo2','事件Demo3'],
                 textStyle: {
-                    color: "#AAA"
+                    color: "#aaa"
                 }
             },
-            calculable: true,
-            xAxis: [
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
                 {
-                    type: "category",
-                    boundaryGap: false,
-                    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+                    type : 'category',
+                    boundaryGap : false,
+                    data : ['周一','周二','周三','周四','周五','周六','周日']
                 }
             ],
-            yAxis: {
-                type: "value"
-            },
-            series: [
+            yAxis : [
                 {
-                    name: "evt1001",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [30, 22, 25, 29, 160, 120, 210]
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'事件Demo1',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[85, 94, 152, 111, 126, 94, 220]
                 },
                 {
-                    name: "evt1002",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [90, 120, 234, 331, 290, 40, 80]
+                    name:'事件Demo2',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[120, 282, 91, 134, 190, 230, 270]
                 },
                 {
-                    name: "测试名称2",
-                    type: "line",
-                    smooth: true,
-                    itemStyle: { normal: { areaStyle: { type: "default" } } },
-                    data: [120, 182, 134, 291, 90, 230, 110]
+                    name:'事件Demo3',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[90, 141, 124, 112, 170, 130, 210]
                 }
             ]
         }

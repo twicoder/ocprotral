@@ -150,7 +150,51 @@ function createMockDataForRecord(record) {
     ]
   );
 
-  record.batchProcessTimeChartDataOption.series[0].areaStyle.normal.color = new echarts.graphic.LinearGradient(
+  record.batchProcessTimeChartDataOption.series[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(
+    0,
+    0,
+    1,
+    0,
+    [
+      {offset: 0, color: '#82DB6C'},
+                            {offset: 0.5, color: '#A9DC6D'},
+                            {offset: 1, color: '#D1625F'}
+    ]
+  );
+}
+
+function createMockDataForEvents(record) {
+  var usefulData_date = [];
+  var uselessData_date = [];
+  var usefulData_data = [Math.random() * 100];
+  var uselessData_data = [Math.random() * 30];
+
+  record.data_statistic.success = 0;
+  record.data_statistic.fail = 0;
+
+  for (var i = 1; i < 2000; i++) {
+    var now = new Date((base += oneDay));
+    usefulData_date.push(
+      [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/")
+    );
+    uselessData_date.push(
+      [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/")
+    );
+    var randomSuccessData = Math.round(
+      (Math.random() - 0.5) * 50 + usefulData_data[i - 1]
+    );
+    usefulData_data.push(randomSuccessData > 0 ? randomSuccessData : 0);
+    record.data_statistic.success += randomSuccessData;
+    var randomFailedData = Math.round(
+      (Math.random() - 0.5) * 10 + uselessData_data[i - 1]
+    );
+    uselessData_data.push(randomFailedData > 0 ? randomFailedData : 0);
+    record.data_statistic.fail += randomFailedData;
+  }
+
+  record.usefulDataTrendChartDataOption.series[0].data = usefulData_data;
+  record.usefulDataTrendChartDataOption.xAxis.data = usefulData_date;
+  record.usefulDataTrendChartDataOption.series[0].areaStyle.normal.color = new echarts.graphic.LinearGradient(
     0,
     0,
     0,
@@ -166,7 +210,39 @@ function createMockDataForRecord(record) {
       }
     ]
   );
+
+  record.uselessDataTrendChartDataOption.series[0].data = uselessData_data;
+  record.uselessDataTrendChartDataOption.xAxis.data = uselessData_date;
+  record.uselessDataTrendChartDataOption.series[0].areaStyle.normal.color = new echarts.graphic.LinearGradient(
+    0,
+    0,
+    0,
+    1,
+    [
+      {
+        offset: 0,
+        color: "rgb(255, 158, 68)"
+      },
+      {
+        offset: 1,
+        color: "rgb(255, 70, 131)"
+      }
+    ]
+  );
+
+  record.batchProcessTimeChartDataOption.series[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(
+    0,
+    0,
+    1,
+    0,
+    [
+      {offset: 0, color: '#82DB6C'},
+                            {offset: 0.5, color: '#A9DC6D'},
+                            {offset: 1, color: '#D1625F'}
+    ]
+  );
 }
+
 
 createMockDataForRecord(demodata[0]);
 createMockDataForRecord(demodata[1]);
@@ -203,26 +279,26 @@ export default {
     },200);
     
 
-    // this.myInterval = setInterval(()=>{
-    //   // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-    //   // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
+    this.myInterval = setInterval(()=>{
+      // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+      // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[1].value =100-this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value;
 
-    //   // this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
-    //   // this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
-    //   // this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
+      // this.allStreamsDataItems[this.dataIndex].memoryRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
+      this.allStreamsDataItems[this.dataIndex].data_statistic.success += Math.floor((Math.random()*10));
+      this.allStreamsDataItems[this.dataIndex].data_statistic.fail += Math.floor((Math.random()*2));
 
-    //   // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.shift();
-    //   // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*300)));
-    //   // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.shift();
-    //   // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*30)));
+      // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.shift();
+      // this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*300)));
+      // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.shift();
+      // this.allStreamsDataItems[this.dataIndex].uselessDataTrendChartDataOption.series[0].data.push(Math.floor((Math.random()*30)));
 
-    //   // for(var index in this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series){
-    //   //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.shift();
-    //   //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.push(Math.floor((Math.random()*300*(1+index) )));
-    //   // }
-    //   // console.log('try to update chart');
-    //   // this.updateCharts();
-    // },1000);
+      // for(var index in this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series){
+      //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.shift();
+      //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.push(Math.floor((Math.random()*300*(1+index) )));
+      // }
+      // console.log('try to update chart');
+      // this.updateCharts();
+    },100);
 
     // window.onresize();
   },
@@ -388,7 +464,7 @@ export default {
 }
 
 .bg-numbers {
-  background: #07a965;
+  background: #82DB6C;
 }
 
 .goPrevArrow {
