@@ -13,12 +13,15 @@ import 'uikit/dist/css/uikit.css'
 import echarts from 'echarts'
 import 'echarts/theme/dark.js'
 import VueResource from 'vue-resource'
+import jsPlumb from 'jsplumb'
 
 Vue.config.productionTip = false;
 Vue.use(Element);
 Vue.prototype.$echarts = echarts;
 Vue.use(VueResource);
 Vue.use(require('vue-moment'));
+
+Vue.prototype.$jsPlumb = jsPlumb.jsPlumb
 
 /* eslint-disable no-new */
 new Vue({

@@ -254,6 +254,8 @@ function createMockDataForEvents(record) {
 createMockDataForRecord(demodata[0]);
 createMockDataForRecord(demodata[1]);
 
+
+
 export default {
   name: "OCSP",
   data() {
@@ -272,7 +274,6 @@ export default {
   },
   created() {},
   mounted() {
-
     if (this.myInterval) {
       clearInterval(this.myInterval);
     }
