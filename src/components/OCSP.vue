@@ -492,6 +492,11 @@ export default {
   -webkit-box-shadow:5px 0px 20px #515151; 
   box-shadow:5px 0px 20px #515151;
   border-radius:10px;
+  transition: all 0.6s;
+}
+
+.mycard:hover {
+  transform: scale(1.1);
 }
 
 </style>
