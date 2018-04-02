@@ -487,9 +487,9 @@ export default {
 }
 
 .mycard {
-  -moz-box-shadow:5px 1px 10px #515151; 
-  -webkit-box-shadow:5px 1px 10px #515151; 
-  box-shadow:5px 1px 10px #515151;
+  -moz-box-shadow:3px 3px 10px #515151; 
+  -webkit-box-shadow:3px 3px 10px #515151; 
+  box-shadow:3px 3px 10px #515151;
   border-radius:10px;
   transition: all 0.6s;
 }
