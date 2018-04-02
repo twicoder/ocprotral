@@ -31,7 +31,7 @@
                             
                         </div>
                     </el-card>
-                    <el-card class="box-card noborder">
+                    <el-card class="box-card noborder" id="usefulDataTrendChartParentId">
                         <div id="usefulDataTrendChart" style="height: 350px;"></div>
                     </el-card>
                     <el-card class="box-card noborder">
@@ -43,7 +43,7 @@
                 <div class="grid-content bg-purple">
                     <el-card class="box-card noborder">
                         <div><h3><b>作业流业务配置图</b></h3></div>
-                        <div id="myChart1" style="height: 408px;">
+                        <div id="myChart1" style="height: 440px;">
                             <a v-on:click="goPrev()" class="el-icon-arrow-left goPrevArrow"></a>
                             <a v-on:click="goNext()" class="el-icon-arrow-right goNextArrow"></a>
                             <el-carousel :autoplay="false"  arrow="never" height="440px" ref="carousel" indicator-position="outside">
@@ -86,8 +86,8 @@ var oneDay = 24 * 3600 * 1000;
 function createMockDataForRecord(record) {
   var usefulData_date = [];
   var uselessData_date = [];
-  var usefulData_data = [Math.random() * 3000];
-  var uselessData_data = [Math.random() * 300];
+  var usefulData_data = [Math.random() * 100];
+  var uselessData_data = [Math.random() * 30];
 
   record.data_statistic.success = 0;
   record.data_statistic.fail = 0;
@@ -101,12 +101,12 @@ function createMockDataForRecord(record) {
       [now.getFullYear(), now.getMonth() + 1, now.getDate()].join("/")
     );
     var randomSuccessData = Math.round(
-      (Math.random() - 0.5) * 200 + usefulData_data[i - 1]
+      (Math.random() - 0.5) * 50 + usefulData_data[i - 1]
     );
     usefulData_data.push(randomSuccessData > 0 ? randomSuccessData : 0);
     record.data_statistic.success += randomSuccessData;
     var randomFailedData = Math.round(
-      (Math.random() - 0.5) * 20 + uselessData_data[i - 1]
+      (Math.random() - 0.5) * 10 + uselessData_data[i - 1]
     );
     uselessData_data.push(randomFailedData > 0 ? randomFailedData : 0);
     record.data_statistic.fail += randomFailedData;
@@ -178,6 +178,7 @@ export default {
       title: "OCSP",
       dataIndex: 0,
       myInterval: null,
+      datashow:false,
       allStreamsDataItems: demodata
     };
   },
@@ -188,10 +189,19 @@ export default {
   },
   created() {},
   mounted() {
+
     if (this.myInterval) {
       clearInterval(this.myInterval);
     }
-    this.updateCharts();
+
+    if(this.myTimeout){
+      clearTimeout(this.myTimeout);
+    }
+
+    this.myTimeout = setTimeout(()=>{
+      this.updateCharts();
+    },200);
+    
 
     // this.myInterval = setInterval(()=>{
     //   // this.allStreamsDataItems[this.dataIndex].cpuRateChartDataOption.series[0].data[0].value =Math.floor((Math.random()*100));
@@ -210,9 +220,11 @@ export default {
     //   //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.shift();
     //   //   this.allStreamsDataItems[this.dataIndex].streamEventsOutputDataChartDataOption.series[index].data.push(Math.floor((Math.random()*300*(1+index) )));
     //   // }
-
+    //   // console.log('try to update chart');
     //   // this.updateCharts();
     // },1000);
+
+    // window.onresize();
   },
   methods: {
     updateOneTickData: function() {
@@ -238,7 +250,7 @@ export default {
       let usefulDataTrendChart = this.$echarts.init(
         document.getElementById("usefulDataTrendChart")
       );
-
+      
       usefulDataTrendChart.setOption(
         this.allStreamsDataItems[this.dataIndex].usefulDataTrendChartDataOption
       );
