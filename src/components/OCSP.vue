@@ -491,7 +491,7 @@ export default {
   box-shadow:3px 3px 10px #aca7b3;
   border-radius:10px;
   transition: all 0.6s;
-  background:#525369;
+  background:#475669;
 }
 
 .el-carousel__item .is-active .is-animating {

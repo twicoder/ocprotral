@@ -4,7 +4,7 @@ let demodata = [
         steamflowchartpath: "../../static/pics/evt1.png",
         data_statistic: { success: 2000, fail: 100 },
         usefulDataTrendChartDataOption: {
-            color: ["#640346", "#67C23A"],
+            color: ["#0098FF", "#67C23A"],
             textStyle: {
                 fontWeight: "bolder",
                 color: "#aaa"
@@ -58,7 +58,7 @@ let demodata = [
                     sampling: 'average',
                     itemStyle: {
                         normal: {
-                            color: 'rgb(255, 70, 131)'
+                            color: '#FCC391'
                         }
                     },
                     areaStyle: {
@@ -125,7 +125,7 @@ let demodata = [
                     sampling: 'average',
                     itemStyle: {
                         normal: {
-                            color: 'rgb(255, 70, 131)'
+                            color: '#FCC391'
                         }
                     },
                     areaStyle: {
@@ -138,7 +138,7 @@ let demodata = [
             ]
         },
         memoryRateChartDataOption: {
-            color: ["#7DDB94", "#D7DD6F"],
+            color: ["#0098FF", "#A3F889"],
             title: {
                 text: "内存比例",
                 x: "center",
@@ -178,7 +178,7 @@ let demodata = [
             ]
         },
         cpuRateChartDataOption: {
-            color: ["#67C23A", "#D7DD6F"],
+            color: ["#0098FF", "#A3F889"],
             title: {
                 text: "CPU核数比例",
                 x: "center",
@@ -271,7 +271,7 @@ let demodata = [
             ]
         },
         streamEventsOutputDataChartDataOption: {
-            color: ["#A9DC6D", "#D37C61"],
+            color: ["#C6EB89", "#17DB54"],
             title: {
                 text: '作业流事件处理数据量',
                 textStyle: {
@@ -394,7 +394,7 @@ let demodata = [
                     sampling: 'average',
                     itemStyle: {
                         normal: {
-                            color: 'rgb(255, 70, 131)'
+                            color: '#FCC391'
                         }
                     },
                     areaStyle: {
@@ -461,7 +461,7 @@ let demodata = [
                     sampling: 'average',
                     itemStyle: {
                         normal: {
-                            color: 'rgb(255, 70, 131)'
+                            color: '#FCC391'
                         }
                     },
                     areaStyle: {
@@ -474,7 +474,7 @@ let demodata = [
             ]
         },
         memoryRateChartDataOption: {
-            color: ["#7DDB94", "#D7DD6F"],
+            color: ["#0098FF", "#A3F889"],
             title: {
                 text: "内存比例",
                 x: "center",
@@ -514,7 +514,7 @@ let demodata = [
             ]
         },
         cpuRateChartDataOption: {
-            color: ["#67C23A", "#D7DD6F"],
+            color: ["#0098FF", "#A3F889"],
             title: {
                 text: "CPU核数比例",
                 x: "center",
@@ -607,7 +607,7 @@ let demodata = [
             ]
         },
         streamEventsOutputDataChartDataOption: {
-            color: ["#A9DC6D", "#D37C61","#596AD8"],
+            color: ["#C6EB89", "#17DB54","#79CDD9"],
             title: {
                 text: '作业流事件处理数据量',
                 textStyle: {
