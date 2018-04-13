@@ -295,9 +295,9 @@ export default {
   margin: 0;
 }
 
-.el-carousel__item {
+/* .el-carousel__item {
   background-color: #182028;
-}
+} */
 
 .el-carousel__button {
   background: red;

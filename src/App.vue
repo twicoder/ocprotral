@@ -282,16 +282,16 @@
 <style>
   html, body {
     margin: 0;
-    background-color: rgb(24, 32, 40);
+    /* background-color: rgb(24, 32, 40); */
   }
 
   body .el-menu {
     border-right: 0;
   }
 
-  h1, h2, h3{
+  /* h1, h2, h3{
     color: white !important;
-  }
+  } */
 
   .el-menu-item-group .el-menu-item-group__title{
     display: none;
@@ -383,7 +383,8 @@
   }
 
   .container{
-    /*background-color: rgb(24, 32, 40);*/
+    background: #F9FAFC;
+    border: 1px solid #E0E6ED;
     padding: 20px;
   }
 
@@ -408,6 +409,6 @@
 
   .mybgimg {
     background-image: url('../static/starbackground.jpg');
-    background-color: #000000;
+    /* background-color: #000000; */
   }
 </style>

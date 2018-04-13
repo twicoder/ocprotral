@@ -20,7 +20,7 @@ let demodata = [
                 text: '有效数据统计图',
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 },
             },
             xAxis: {
@@ -87,7 +87,7 @@ let demodata = [
                 text: '无效数据统计图',
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 },
             },
             xAxis: {
@@ -143,7 +143,7 @@ let demodata = [
                 text: "内存比例",
                 x: "center",
                 textStyle: {
-                    color: "#EEE"
+                    color: "#475669"
                 }
             },
             textStyle: {
@@ -183,7 +183,7 @@ let demodata = [
                 text: "CPU核数比例",
                 x: "center",
                 textStyle: {
-                    color: "#EEE"
+                    color: "#475669"
                 }
             },
             textStyle: {
@@ -234,7 +234,7 @@ let demodata = [
                 data: ["每批次处理时间（s）"],
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 }
             },
             grid: {
@@ -276,7 +276,7 @@ let demodata = [
                 text: '作业流事件处理数据量',
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 }
             },
             textStyle: {
@@ -295,7 +295,7 @@ let demodata = [
             legend: {
                 data:['事件Demo1','事件Demo2'],
                 textStyle: {
-                    color: "#aaa"
+                    color: "#475669"
                 }
             },
             grid: {
@@ -356,7 +356,7 @@ let demodata = [
                 text: '有效数据统计图',
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 },
             },
             xAxis: {
@@ -423,7 +423,7 @@ let demodata = [
                 text: '无效数据统计图',
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 },
             },
             xAxis: {
@@ -479,7 +479,7 @@ let demodata = [
                 text: "内存比例",
                 x: "center",
                 textStyle: {
-                    color: "#EEE"
+                    color: "#475669"
                 }
             },
             textStyle: {
@@ -519,7 +519,7 @@ let demodata = [
                 text: "CPU核数比例",
                 x: "center",
                 textStyle: {
-                    color: "#EEE"
+                    color: "#475669"
                 }
             },
             textStyle: {
@@ -570,7 +570,7 @@ let demodata = [
                 data: ["每批次处理时间（s）"],
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 }
             },
             grid: {
@@ -612,7 +612,7 @@ let demodata = [
                 text: '作业流事件处理数据量',
                 textStyle: {
                     fontWeight: "bolder",
-                    color: "#aaa"
+                    color: "#475669"
                 }
             },
             textStyle: {
@@ -631,7 +631,7 @@ let demodata = [
             legend: {
                 data:['事件Demo1','事件Demo2','事件Demo3'],
                 textStyle: {
-                    color: "#aaa"
+                    color: "#475669"
                 }
             },
             grid: {

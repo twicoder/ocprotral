@@ -5,8 +5,8 @@
         <el-col :span="18" :offset="6">
           <div class="" style="display:inline-block;">
             <span class="">
-              <h1 style="display:inline-block;" class="">AISWare Stream Processor</h1>
-              <a href="" style="color:grey;margin-left:20px;">访问应用实例</a>
+              <h1 style="display:inline-block;" class="content_title">AISWare Stream Processor</h1>
+              <a href="" style="color:grey;margin-left:20px;" class="content_subtitle">访问应用实例</a>
             </span>
           </div>
         </el-col>
@@ -49,7 +49,7 @@
             <el-col :span="12">
                 <div class="grid-content bg-purple">
                     <el-card class="box-card noborder mycard">
-                        <div><h3><b>作业流业务配置图</b></h3></div>
+                        <div><h3><b class="content_title">作业流业务配置图</b></h3></div>
                         <div id="myChart1" style="height: 425px;">
                             <a v-on:click="goPrev()" class="el-icon-arrow-left goPrevArrow"></a>
                             <a v-on:click="goNext()" class="el-icon-arrow-right goNextArrow"></a>
@@ -423,7 +423,6 @@ export default {
 }
 
 .el-carousel__item h3 {
-  color: #475669;
   font-size: 18px;
   opacity: 0.75;
   line-height: 300px;
@@ -442,7 +441,7 @@ export default {
   margin: 5px 5px 5px 5px;
   height: 75px;
   box-sizing: border-box;
-  color: #fff;
+  color: #475669;
   font-size: 10px;
 }
 
@@ -486,12 +485,9 @@ export default {
 }
 
 .mycard {
-  -moz-box-shadow:3px 3px 10px #aca7b3; 
-  -webkit-box-shadow:3px 3px 10px #aca7b3; 
-  box-shadow:3px 3px 10px #aca7b3;
-  border-radius:10px;
   transition: all 0.6s;
-  background:#525369;
+  border: 1px solid #CCD5E0;
+  border-radius: 4px;
 }
 
 .el-carousel__item .is-active .is-animating {
@@ -500,6 +496,24 @@ export default {
 
 .mycard:hover {
   transform: scale(1.03);
+}
+
+.content_title {
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  color: #475669;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+
+.content_subtitle {
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #A2B0C4;
+}
+
+.el-card {
+  background-color: white;
 }
 
 </style>
